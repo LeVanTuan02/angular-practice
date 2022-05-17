@@ -1,0 +1,67 @@
+<div class="container p-3">
+  <div class="row align-items-center">
+    <div class="col">
+      <h2>Cập nhật SP</h2>
+    </div>
+
+    <div class="col">
+      <a routerLink="/admin/product" class="d-block text-end">
+        <button class="btn btn-sm btn-primary">DS SP</button>
+      </a>
+    </div>
+  </div>
+
+  <form (ngSubmit)="handleUpdateProduct()" [formGroup]="formUpdateProduct" *ngIf="formUpdateProduct">
+    <div class="mb-3">
+      <label for="name" class="form-label">Tên SP</label>
+      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nhập tên SP">
+      <div class="form-text" *ngIf="formUpdateProduct.get('name')?.invalid && (formUpdateProduct.get('name')?.dirty || formUpdateProduct.get('name')?.touched)">
+        <p class="text-danger" *ngIf="formUpdateProduct.get('name')?.hasError('required')">Vui lòng nhập tên SP</p>
+        <p class="text-danger" *ngIf="formUpdateProduct.get('name')?.hasError('minlength')">Tên SP tối thiểu 3 ký tự</p>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="price" class="form-label">Giá SP</label>
+      <input
+        type="number"
+        formControlName="price"
+        class="form-control"
+        id="price"
+        placeholder="Nhập giá SP"
+      >
+      <div class="form-text" *ngIf="formUpdateProduct.get('price')?.invalid && (formUpdateProduct.get('price')?.dirty || formUpdateProduct.get('price')?.touched)">
+        <p class="text-danger" *ngIf="formUpdateProduct.get('price')?.hasError('required')">Vui lòng nhập giá SP</p>
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="image" class="form-label">Ảnh SP</label>
+      <input class="form-control" type="file" id="image" (change)="handleChangeImage($event)">
+    </div>
+
+    <div class="mb-3">
+      <label for="preview" class="form-label d-block">Preview</label>
+      <img [src]="preview" [ngStyle]="{'width': '120px', 'height': '120px', 'object-fit': 'cover'}" alt="">
+    </div>
+  
+    <div class="mb-3">
+      <label for="category" class="form-label">Danh mục SP</label>
+      <select formControlName="categoryId" class="form-select">
+        <option value="">Chọn danh mục</option>
+        <option [value]="cate.id" *ngFor="let cate of listCategory">{{ cate.name }}</option>
+      </select>
+
+      <div class="form-text" *ngIf="formUpdateProduct.get('categoryId')?.invalid && (formUpdateProduct.get('categoryId')?.dirty || formUpdateProduct.get('categoryId')?.touched)">
+      <p class="text-danger" *ngIf="formUpdateProduct.get('categoryId')?.hasError('required')">Vui lòng chọn danh mục SP</p>
+    </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="description" class="form-label">Mô tả SP</label>
+      <textarea class="form-control" formControlName="description" id="description" rows="3" placeholder="Nhập mô tả SP"></textarea>
+    </div>
+  
+    <button type="submit" [disabled]="!formUpdateProduct.valid" class="btn btn-primary">Cập nhật SP</button>
+  </form>
+</div>

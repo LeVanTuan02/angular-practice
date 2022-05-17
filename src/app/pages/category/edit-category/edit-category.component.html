@@ -1,0 +1,26 @@
+<div class="container p-3">
+  <div class="row align-items-center">
+    <div class="col">
+      <h2>Cập nhật danh mục</h2>
+    </div>
+
+    <div class="col">
+      <a [routerLink]="['/admin/category']" class="text-end d-block">
+        <button class="btn btn-sm btn-primary">DS danh mục</button>
+      </a>
+    </div>
+  </div>
+
+  <form *ngIf="formUpdateCate" (ngSubmit)="handleUpdate()" [formGroup]="formUpdateCate">
+    <div class="mb-3">
+      <label for="name" class="form-label">Tên danh mục</label>
+      <input type="name" formControlName="name" class="form-control" id="name" placeholder="Nhập tên danh mục">
+      <div id="emailHelp" class="form-text" *ngIf="formUpdateCate.get('name')?.invalid && (formUpdateCate.get('name')?.dirty || formUpdateCate.get('name')?.touched)">
+        <p class="text-danger" *ngIf="formUpdateCate.get('name')?.hasError('required')">Vui lòng nhập tên danh mục</p>
+        <p class="text-danger" *ngIf="formUpdateCate.get('name')?.hasError('minlength')">Vui lòng nhập tối thiểu 3 ký tự</p>
+      </div>
+    </div>
+  
+    <button [disabled]="!formUpdateCate.valid" type="submit" class="btn btn-primary btn-sm">Cập nhật danh mục</button>
+  </form>
+</div>

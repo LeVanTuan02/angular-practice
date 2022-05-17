@@ -1,0 +1,40 @@
+<div class="container p-3">
+  <div class="row align-items-center">
+    <div class="col">
+      <h2>Danh sách danh mục</h2>
+    </div>
+
+    <div class="col">
+      <a routerLink="/admin/category/add" class="d-block text-end">
+        <button class="btn btn-sm btn-primary">Thêm danh mục</button>
+      </a>
+    </div>
+  </div>
+
+  <table class="table" *ngIf="categoryList.length > 1; else noResult">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên danh mục</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cate of categoryList; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ cate.name }}</td>
+        <td>
+          <a [routerLink]="['/admin/category', cate.id, 'edit']">
+            <button class="btn btn-sm btn-primary m-1">Edit</button>
+          </a>
+
+          <button class="btn btn-sm btn-danger" (click)="handleRemove(cate.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noResult>
+    <div>Không tồn tại danh mục</div>
+  </ng-template>
+</div>

@@ -1,0 +1,110 @@
+{
+  "categories": [
+    {
+      "name": "Brett Walter1",
+      "id": "1"
+    },
+    {
+      "name": "Jermaine O'Kon",
+      "id": "2"
+    },
+    {
+      "name": "Juana Metz Jr.",
+      "id": "3"
+    },
+    {
+      "name": "Harvey Lang",
+      "id": "4"
+    },
+    {
+      "name": "Sam Schowalter",
+      "id": "5"
+    },
+    {
+      "name": "Bobbie MacGyver MD",
+      "id": "6"
+    },
+    {
+      "id": "ZBdXNBk",
+      "name": "Test cate update"
+    },
+    {
+      "id": "lwCsIVA",
+      "name": "Check"
+    }
+  ],
+  "products": [
+    {
+      "name": "Direct Data Officer",
+      "price": 56000,
+      "categoryId": "4",
+      "description": "Neque unde quae veritatis ipsam accusamus officia in. Repellendus consequatur facere labore. Vel ab quaerat qui officia. Id vel id. Maiores et et labore aut harum deserunt minima illum.",
+      "image": "http://loremflickr.com/640/480",
+      "id": "1"
+    },
+    {
+      "name": "International Factors Representative",
+      "price": 23000,
+      "categoryId": "ZBdXNBk",
+      "description": "Fugit cupiditate voluptas quibusdam deserunt. Quibusdam quasi impedit vel. Sit est impedit blanditiis est ut.",
+      "image": "http://res.cloudinary.com/levantuan/image/upload/v1652778372/assignment-js/cmybsgzutqgwqvlgmugn.jpg",
+      "id": "2"
+    },
+    {
+      "name": "Lead Intranet Executive",
+      "price": 72,
+      "categoryId": "ZBdXNBk",
+      "description": "Quia est ut id consequatur est consequatur sunt dolor. Quam rerum aut id. Aut eaque ab pariatur totam delectus.",
+      "image": "http://loremflickr.com/640/480",
+      "id": "3"
+    },
+    {
+      "name": "Central Data Strategist",
+      "image": "http://loremflickr.com/640/480",
+      "price": 99,
+      "categoryId": "3",
+      "description": "Fuga deserunt et soluta laboriosam sit enim occaecati harum et. Enim repudiandae adipisci et id doloremque qui aliquam adipisci. Laboriosam vero earum magnam.",
+      "id": "4"
+    },
+    {
+      "name": "Tuân BG",
+      "price": 999,
+      "image": "http://res.cloudinary.com/levantuan/image/upload/v1652776110/assignment-js/tbfvvho3tr2i8i7fl5bo.jpg",
+      "categoryId": "2",
+      "description": null,
+      "id": "QOuWGAk"
+    },
+    {
+      "name": "Direct Data Officer",
+      "price": 35,
+      "categoryId": "1",
+      "description": "Neque unde quae veritatis ipsam accusamus officia in. Repellendus consequatur facere labore. Vel ab quaerat qui officia. Id vel id. Maiores et et labore aut harum deserunt minima illum.",
+      "image": "http://loremflickr.com/640/480",
+      "id": "SCKr3v8"
+    },
+    {
+      "name": "Direct Data Officer 1",
+      "price": 35,
+      "categoryId": "4",
+      "description": "Neque unde quae veritatis ipsam accusamus officia in. Repellendus consequatur facere labore. Vel ab quaerat qui officia. Id vel id. Maiores et et labore aut harum deserunt minima illum.",
+      "image": "http://loremflickr.com/640/480",
+      "id": "N3Q3Sqy"
+    },
+    {
+      "name": "Tuân Nek",
+      "price": 100000,
+      "categoryId": "4",
+      "description": "Neque unde quae veritatis ipsam accusamus officia in. Repellendus consequatur facere labore. Vel ab quaerat qui officia. Id vel id. Maiores et et labore aut harum deserunt minima illum.",
+      "image": "http://res.cloudinary.com/levantuan/image/upload/v1652778519/assignment-js/iohtsksjus7zohj4eqmj.jpg",
+      "id": "vViqRlc"
+    },
+    {
+      "name": "Tuan Nek update",
+      "price": 35,
+      "categoryId": "4",
+      "description": "Neque unde quae veritatis ipsam accusamus officia in. Repellendus consequatur facere labore. Vel ab quaerat qui officia. Id vel id. Maiores et et labore aut harum deserunt minima illum.",
+      "image": "http://loremflickr.com/640/480",
+      "id": "BdKOSfv"
+    }
+  ]
+}

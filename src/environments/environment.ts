@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: "http://localhost:3003",
+  defaultImage: "https://taxreform.dof.gov.ph/wp-content/uploads/2019/07/no-thumbnail-medium.png"
 };
 
 /*

@@ -1,0 +1,26 @@
+<div class="container p-3">
+  <div class="row align-items-center">
+    <div class="col">
+      <h2>Thêm danh mục</h2>
+    </div>
+
+    <div class="col">
+      <a [routerLink]="['/admin/category']" class="text-end d-block">
+        <button class="btn btn-sm btn-primary">DS danh mục</button>
+      </a>
+    </div>
+  </div>
+
+  <form (ngSubmit)="handleAdd()" #formAdd="ngForm">
+    <div class="mb-3">
+      <label for="name" class="form-label">Tên danh mục</label>
+      <input type="email" class="form-control" required minlength="3" id="name" name="name" placeholder="Nhập tên danh mục" ngModel #name="ngModel">
+      <div id="emailHelp" class="form-text" *ngIf="!name.valid && (name.dirty || name.touched)">
+        <p class="text-danger" *ngIf="name.errors && name.errors['required']">Vui lòng nhập tên danh mục</p>
+        <p class="text-danger" *ngIf="name.errors && name.errors['minlength']">Tên danh mục tối thiểu {{name.errors['minlength']['requiredLength']}} ký tự</p>
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary btn-sm" [disabled]="formAdd.invalid">Thêm danh mục</button>
+  </form>
+</div>
