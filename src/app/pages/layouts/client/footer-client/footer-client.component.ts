@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-footer-client',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterClientComponent implements OnInit {
 
+  @Input() scrollTop!: number
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  backToTop() {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
 }

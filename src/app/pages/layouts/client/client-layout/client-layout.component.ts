@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-client-layout',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientLayoutComponent implements OnInit {
 
+  scrollTop!: number
+
   constructor() { }
 
   ngOnInit(): void {
+    window.onscroll = () => this.scrollTop = window.scrollY;
   }
 
 }

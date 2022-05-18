@@ -11,3 +11,22 @@ ul {
 a {
   text-decoration: none !important;
 }
+
+.btn__scroll-top.active {
+  @apply tw-bottom-5 tw-visible;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0)
+  }
+}
+
+#header-bottom.active {
+  @apply tw-fixed tw-top-0 tw-left-0 tw-right-0 tw-opacity-95 tw-h-[70px] tw-shadow-md tw-z-20;
+  animation: slideDown 0.6s ease-in-out;
+}

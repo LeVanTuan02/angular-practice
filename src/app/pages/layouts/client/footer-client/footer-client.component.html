@@ -7,22 +7,22 @@
         <p class="tw-text-gray-300 tw-text-justify"> Chúng tôi mong muốn tạo nên hương vị thức uống tuyệt vời nhất. Là điểm đến đầu tiên dành cho bạn khi muốn thưởng thức trọn vẹn của tách Coffee </p>
         <ul class="tw-flex tw-text-white">
           <li class="tw-mr-3 tw-mt-3">
-            <a href="https://www.facebook.com/LeVanTuan.Info/" target="_blank">
+            <a class="tw-text-white" href="https://www.facebook.com/LeVanTuan.Info/" target="_blank">
               <i class="fab fa-facebook-f"></i>
             </a>
           </li>
           <li class="tw-mr-3 tw-mt-3">
-            <a href="https://www.youtube.com/c/L%C3%AAV%C4%83nTu%C3%A2n02/" target="_blank">
+            <a class="tw-text-white" href="https://www.youtube.com/c/L%C3%AAV%C4%83nTu%C3%A2n02/" target="_blank">
               <i class="fab fa-youtube"></i>
             </a>
           </li>
           <li class="tw-mr-3 tw-mt-3">
-            <a href="https://www.instagram.com/_tuan02/" target="_blank">
+            <a class="tw-text-white" href="https://www.instagram.com/_tuan02/" target="_blank">
               <i class="fab fa-instagram"></i>
             </a>
           </li>
           <li class="tw-mr-3 tw-mt-3">
-            <a href="https://www.tiktok.com/@tuandemo" target="_blank">
+            <a class="tw-text-white" href="https://www.tiktok.com/@tuandemo" target="_blank">
               <i class="fab fa-tiktok"></i>
             </a>
           </li>
@@ -32,26 +32,27 @@
         <h3 class="tw-text-white tw-text-xl tw-uppercase tw-font-semibold tw-mb-3">Liên hệ</h3>
         <ul class="tw-text-white tw-leading-relaxed">
           <li class="tw-flex">
-            <div class="min-w-[25px]">
+            <div class="tw-min-w-[25px]">
               <i class="fas fa-home"></i>
-            </div> Lạng Giang, Bắc Giang
+            </div>
+            Lạng Giang, Bắc Giang
           </li>
           <li class="tw-flex">
-            <div class="min-w-[25px]">
+            <div class="tw-min-w-[25px]">
               <i class="fas fa-phone-alt"></i>
             </div>
-            Hotline:
-            <a href="tel:0347247244">0347247244</a>
+            <span>Hotline: </span>
+            <a class="tw-text-white tw-pl-1" href="tel:0347247244">0347247244</a>
           </li>
           <li class="tw-flex">
-            <div class="min-w-[25px]">
+            <div class="tw-min-w-[25px]">
               <i class="fas fa-envelope"></i>
-            </div> Email: <a href="mailto:tuanlvph14271@fpt.edu.vn">tuanlvph14271@fpt.edu.vn</a>
+            </div> Email: <a class="tw-text-white tw-pl-1" href="mailto:tuanlvph14271@fpt.edu.vn">tuanlvph14271@fpt.edu.vn</a>
           </li>
           <li class="tw-flex">
-            <div class="min-w-[25px]">
+            <div class="tw-min-w-[25px]">
               <i class="fab fa-facebook-f"></i>
-            </div> Facebook: <a href="https://www.facebook.com/LeVanTuan.Info/" target="_blank">Lê Văn Tuân</a>
+            </div> Facebook: <a class="tw-text-white tw-pl-1" href="https://www.facebook.com/LeVanTuan.Info/" target="_blank">Lê Văn Tuân</a>
           </li>
         </ul>
       </div>
@@ -59,17 +60,17 @@
         <h3 class="tw-text-white tw-text-xl tw-uppercase tw-font-semibold tw-mb-3">Kết nối với chúng tôi</h3>
         <div class="fb-page" data-href="https://www.facebook.com/fpt.poly" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
           <blockquote cite="https://www.facebook.com/fpt.poly" class="fb-xfbml-parse-ignore">
-            <a href="https://www.facebook.com/fpt.poly">Cao đẳng FPT Polytechnic</a>
+            <a class="tw-text-white" href="https://www.facebook.com/fpt.poly">Cao đẳng FPT Polytechnic</a>
           </blockquote>
         </div>
       </div>
     </div>
-    <div class="tw-text-center tw-text-gray-300 tw-mt-9"> Copyright 2022 © <strong> Bản quyền thuộc về <a href="https://www.facebook.com/LeVanTuan.Info/" target="_blank">TuanDemo</a>
+    <div class="tw-text-center tw-text-gray-300 tw-mt-9"> Copyright 2022 © <strong> Bản quyền thuộc về <a class="tw-text-white" href="https://www.facebook.com/LeVanTuan.Info/" target="_blank">TuanDemo</a>
       </strong>
     </div>
   </div>
   <!-- btn scroll top -->
-  <button class="btn__scroll-top tw-invisible tw-w-9 tw-h-9 tw-rounded-full tw-border-2 tw-border-gray-400 tw-text-gray-400 tw-fixed tw-right-5 tw-bottom-3 tw-transition-all tw-ease-linear duration-400 hover:tw-text-white hover:bg-[#D9A953] hover:border-[#D9A953]">
+  <button (click)="backToTop()" [ngClass]="{active: scrollTop > 500 ? true : false}" class="btn__scroll-top tw-invisible tw-w-9 tw-h-9 tw-rounded-full tw-border-2 tw-border-gray-400 tw-text-gray-400 tw-fixed tw-right-5 tw-bottom-3 tw-transition-all tw-ease-linear tw-duration-400 hover:tw-text-white hover:tw-bg-[#D9A953] hover:tw-border-[#D9A953]">
     <i class="fas fa-chevron-up"></i>
   </button>
 </footer>
