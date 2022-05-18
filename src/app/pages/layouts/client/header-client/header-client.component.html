@@ -1,0 +1,94 @@
+<header>
+    <!-- header top -->
+    <div class="tw-bg-[#D9A953] tw-hidden md:tw-block">
+      <div class="tw-container tw-max-w-6xl tw-px-3 tw-mx-auto tw-flex tw-justify-between tw-items-center tw-h-10">
+        <ul class="tw-flex tw-items-center tw-mb-0">
+          <li class="tw-relative after:tw-content-[''] after:tw-absolute after:tw-w-[1px] after:tw-h-3.5 after:tw-bg-gray-50 after:tw-right-3 after:tw-top-1/2 after:tw--translate-y-1/2 tw-text-sm tw-uppercase tw-pr-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
+            <a href="mailto:tuanlvph14271@fpt.edu.vn" class="tw-no-underline tw-text-gray-50">
+              <i class="fas fa-envelope"></i>
+              <span class="tw-pl-1">Contact</span>
+            </a>
+          </li>
+          <li class="tw-relative after:tw-content-[''] after:tw-absolute after:tw-w-[1px] after:tw-h-3.5 after:tw-bg-gray-50 after:tw-right-3 after:tw-top-1/2 after:tw--translate-y-1/2 tw-text-sm tw-uppercase tw-pr-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
+            <i class="far fa-clock"></i>
+            <span class="tw-pl-1">08:00 - 17:00</span>
+          </li>
+          <li class="tw-text-sm tw-uppercase tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
+            <a href="tel:0347247244" class="tw-no-underline tw-text-gray-50">
+              <i class="fas fa-phone-alt"></i>
+              <span class="tw-pl-1">0347 247 244</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="tw-flex tw-items-center tw-mb-0">
+          <li class="group tw-relative tw-uppercase tw-text-sm tw-pl-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
+            <button class="tw-rounded-full tw-border tw-border-gray-50 tw-w-7 tw-h-7">
+              <i class="fas fa-search"></i>
+            </button>
+            <div class="tw-hidden min-w-[280px] tw-z-20 group-hover:tw-block tw-absolute tw-top-full -right-[100px] tw-bg-white tw-shadow tw-p-3 tw-opacity-100">
+              <form action="" class="tw-flex" id="form-search-product">
+                <input type="text" id="form-search-control" class="tw-text-black shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:shadow-[0_0_5px_#ccc] tw-flex-1 tw-border tw-px-2 tw-h-8 tw-text-sm tw-outline-none" placeholder="Nhập tên sản phẩm">
+                <button class="tw-px-3 tw-bg-red-500 tw-transition tw-ease-linear tw-duration-300 hover:shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">
+                  <i class="fas fa-search"></i>
+                </button>
+              </form>
+              <ul class="tw-mt-3 tw-grid tw-grid-cols-1 tw-divide-y max-h-[70vh] tw-overflow-y-auto" id="search-product-result"></ul>
+            </div>
+          </li>
+          <li class="tw-relative after:tw-content-[''] after:tw-absolute after:tw-w-[1px] after:tw-h-3.5 after:tw-bg-gray-50 after:tw-left-3 after:tw-top-1/2 after:tw--translate-y-1/2 tw-uppercase tw-text-sm tw-pl-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
+            <a href="/#/login" class="tw-text-gray-50 tw-no-underline">Đăng nhập</a>
+          </li>
+          <li class="tw-relative after:tw-content-[''] after:tw-absolute after:tw-w-[1px] after:tw-h-3.5 after:tw-bg-gray-50 after:tw-left-3 after:tw-top-1/2 after:tw--translate-y-1/2 tw-uppercase tw-text-sm tw-pl-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
+            <a href="/#/register" class="tw-text-gray-50 tw-no-underline">Đăng ký</a>
+          </li>
+          <li class="header-icon-heart tw-relative after:tw-content-[''] after:tw-absolute after:tw-w-[1px] after:tw-h-3.5 after:tw-bg-gray-50 after:tw-left-3 after:tw-top-1/2 after:tw--translate-y-1/2 tw-uppercase tw-text-base tw-cursor-pointer tw-pl-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100"> wishlist </li>
+          <li id="header-cart-label" class="tw-uppercase tw-text-base tw-pl-4 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100"> 10 </li>
+        </ul>
+      </div>
+    </div>
+    <!-- end header top -->
+    <!-- header bottom -->
+    <div class="md:tw-h-24 h-[70px] tw-bg-white" id="header-bottom">
+      <app-client-header-nav></app-client-header-nav>
+    </div>
+    <!-- end header bottom -->
+    <!-- nav on mobile -->
+    <section class="nav__mobile tw-invisible tw-transition-all tw-duration-500 tw-ease-linear tw-fixed tw-top-0 tw-right-0 tw-bottom-0 tw-left-0 tw-z-20">
+      <!-- overlay -->
+      <div class="nav__mobile-overlay tw-invisible tw-transition-all duration-400 tw-ease-linear tw-relative tw-w-screen tw-h-screen bg-[rgba(0,0,0,0.6)]"></div>
+      <nav class="nav__mobile-content tw--translate-x-full tw-transition tw-duration-500 ease tw-absolute tw-top-0 tw-left-0 tw-bottom-0 min-w-[260px] bg-[rgba(255,255,255,0.95)] tw-shadow tw-py-10">
+        <form action="" class="tw-flex tw-px-3" id="nav__mobile-search">
+          <input type="text" class="shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:shadow-[0_0_5px_#ccc] min-w-[80px] tw-border tw-px-2 tw-h-8 tw-text-sm tw-outline-none" placeholder="Nhập tên sản phẩm tìm kiếm">
+          <button class="tw-px-3 tw-text-white tw-bg-red-500 tw-transition tw-ease-linear tw-duration-300 hover:shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+        <ul class="tw-grid tw-grid-cols-1 tw-divide-y tw-mt-5">
+          <li>
+            <a href="/#/" class="tw-px-3 tw-py-3.5 tw-transition tw-ease-linear tw-duration-200 hover:tw-bg-gray-200 tw-text-sm tw-font-semibold tw-text-gray-500 hover:tw-text-black tw-uppercase tw-block">Trang chủ</a>
+          </li>
+          <li>
+            <a href="/#/intro" class="tw-px-3 tw-py-3.5 tw-transition tw-ease-linear tw-duration-200 hover:tw-bg-gray-200 tw-text-sm tw-font-semibold tw-text-gray-500 hover:tw-text-black tw-uppercase tw-block">Giới thiệu</a>
+          </li>
+          <li>
+            <a href="/#/products" class="tw-px-3 tw-py-3.5 tw-transition tw-ease-linear tw-duration-200 hover:tw-bg-gray-200 tw-text-sm tw-font-semibold tw-text-gray-500 hover:tw-text-black tw-uppercase tw-block">Sản phẩm</a>
+          </li>
+          <li>
+            <a href="/#/news" class="tw-px-3 tw-py-3.5 tw-transition tw-ease-linear tw-duration-200 hover:tw-bg-gray-200 tw-text-sm tw-font-semibold tw-text-gray-500 hover:tw-text-black tw-uppercase tw-block">Tin tức</a>
+          </li>
+          <li>
+            <a href="/#/contact" class="tw-px-3 tw-py-3.5 tw-transition tw-ease-linear tw-duration-200 hover:tw-bg-gray-200 tw-text-sm tw-font-semibold tw-text-gray-500 hover:tw-text-black tw-uppercase tw-block">Liên hệ</a>
+          </li>
+          <li>
+            <a href="/#/store" class="tw-px-3 tw-py-3.5 tw-transition tw-ease-linear tw-duration-200 hover:tw-bg-gray-200 tw-text-sm tw-font-semibold tw-text-gray-500 hover:tw-text-black tw-uppercase tw-block">Cửa hàng</a>
+          </li>
+        </ul>
+      </nav>
+      <button class="nav__mobile-close tw-fixed tw-top-3 tw-right-3 tw-text-3xl tw-text-gray-300 tw-transition tw-duration-200 tw-ease-linear hover:tw-text-white">
+        <i class="fas fa-times"></i>
+      </button>
+    </section>
+    <!-- nav on mobile -->
+    <!-- wishlist -->
+    <section id="wishlist" class="wishlist"></section>
+  </header>
