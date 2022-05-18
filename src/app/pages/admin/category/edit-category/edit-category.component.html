@@ -11,16 +11,34 @@
     </div>
   </div>
 
-  <form *ngIf="formUpdateCate" (ngSubmit)="handleUpdate()" [formGroup]="formUpdateCate">
+  <form (ngSubmit)="handleUpdate()" #formUpdateCate="ngForm">
     <div class="mb-3">
       <label for="name" class="form-label">Tên danh mục</label>
-      <input type="name" formControlName="name" class="form-control" id="name" placeholder="Nhập tên danh mục">
-      <div id="emailHelp" class="form-text" *ngIf="formUpdateCate.get('name')?.invalid && (formUpdateCate.get('name')?.dirty || formUpdateCate.get('name')?.touched)">
-        <p class="text-danger" *ngIf="formUpdateCate.get('name')?.hasError('required')">Vui lòng nhập tên danh mục</p>
-        <p class="text-danger" *ngIf="formUpdateCate.get('name')?.hasError('minlength')">Vui lòng nhập tối thiểu 3 ký tự</p>
+      <input type="text" class="form-control" id="name" name="name" #name="ngModel" (input)="changeName($event)" ngModel required minlength="3" placeholder="Nhập tên danh mục">
+      <div class="form-text" *ngIf="name.invalid && (name.dirty || name.touched)">
+        <p class="text-danger" *ngIf="name.errors && name.errors['required']">Vui lòng nhập tên danh mục</p>
+        <p class="text-danger" *ngIf="name.errors && (name.errors['minlength'])">Vui lòng nhập tối thiểu {{ name.errors['minlength']['requiredLength'] }} ký tự</p>
       </div>
     </div>
+
+    <div class="mb-3">
+      <label for="slug" class="form-label">Slug</label>
+      <input type="text" class="form-control" readonly placeholder="Slug" name="slug" ngModel #slug>
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Ảnh danh mục</label>
+      <input type="file" class="form-control" name="image" id="image" accept="image/*" ngModel #image="ngModel" (change)="changeImage($event)">
+      <div class="form-text" *ngIf="image.invalid && (image.dirty || image.touched)">
+        <p class="text-danger" *ngIf="image.errors && image.errors['required']">Vui lòng chọn ảnh danh mục</p>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="preview" class="form-label">Preview</label>
+      <img [src]="preview" alt="" [ngStyle]="{width: '120px', height: '120px', 'object-fit': 'cover'}">
+    </div>
   
-    <button [disabled]="!formUpdateCate.valid" type="submit" class="btn btn-primary btn-sm">Cập nhật danh mục</button>
+    <button [disabled]="formUpdateCate.invalid" type="submit" class="btn btn-primary btn-sm">Cập nhật danh mục</button>
   </form>
 </div>

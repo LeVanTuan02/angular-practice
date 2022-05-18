@@ -11,10 +11,10 @@ export class CategoryService {
   constructor(private http: HttpClient) { }
 
   getAllCategory() {
-    return this.http.get<CategoryType[]>(`${environment.apiUrl}/categories`);
+    return this.http.get<CategoryType[]>(`${environment.apiUrl}/categories/?_sort=id&_order=desc`);
   }
 
-  removeCategory(id?: string) {
+  removeCategory(id?: number) {
     return this.http.delete(`${environment.apiUrl}/categories/${id}`);
   }
 
@@ -27,6 +27,6 @@ export class CategoryService {
   }
 
   updateCategory(cate: CategoryType) {
-    return this.http.put(`${environment.apiUrl}/categories/${cate.id}`, cate);
+    return this.http.patch(`${environment.apiUrl}/categories/${cate.id}`, cate);
   }
 }

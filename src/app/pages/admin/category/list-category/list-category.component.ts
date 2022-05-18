@@ -23,7 +23,7 @@ export class ListCategoryComponent implements OnInit {
     this.cateService.getAllCategory().subscribe(response => this.categoryList = response)
   }
 
-  handleRemove(id?: string) {
+  handleRemove(id?: number) {
     Swal.fire({
       title: 'Bạn có chắc chắn muốn xóa không?',
       text: "Bạn không thể hoàn tác sau khi xóa",

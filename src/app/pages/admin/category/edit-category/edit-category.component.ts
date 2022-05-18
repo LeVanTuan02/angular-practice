@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { environment } from './../../../../../environments/environment';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/services/category.service';
+import slugify from 'slugify';
+import { UploadFileService } from 'src/app/services/upload-file.service';
 
 @Component({
   selector: 'app-edit-category',
@@ -11,7 +14,10 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class EditCategoryComponent implements OnInit {
 
-  formUpdateCate!: FormGroup
+  @ViewChild('formUpdateCate') formUpdateCate!: NgForm
+  preview: any = environment.defaultImage
+  image!: FileList
+  @ViewChild("slug") slug!: ElementRef
 
   id!: string
 
@@ -19,7 +25,8 @@ export class EditCategoryComponent implements OnInit {
     private route: ActivatedRoute,
     private toast: ToastrService,
     private router: Router,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private upload: UploadFileService
   ) { }
 
   ngOnInit(): void {
@@ -28,13 +35,21 @@ export class EditCategoryComponent implements OnInit {
     this.onGetCate()
   }
 
-  handleUpdate() {
+  async handleUpdate() {
     if (!this.formUpdateCate.invalid) {
+      
+      const { image: oldImage, ...formData } = this.formUpdateCate.value;
+
+      if (this.image && this.image.length) {
+        const uploadResult = await this.upload.uploadImage(this.image).toPromise()
+        formData.image = uploadResult.url;
+      }
+
       this.categoryService
-        .updateCategory({ id: this.id, ...this.formUpdateCate.value })
+        .updateCategory({ id: this.id, ...formData })
         .subscribe(() => {
           this.toast.success("Cập nhật thành công")
-          this.router.navigate(['/admin/category'])
+          this.router.navigate(['/admin/categories'])
         })
     } else {
       console.log(this.formUpdateCate)
@@ -43,10 +58,33 @@ export class EditCategoryComponent implements OnInit {
 
   onGetCate() {
     this.categoryService.getCategory(this.id).subscribe(response => {
-      this.formUpdateCate = new FormGroup({
-        name: new FormControl(response.name, [Validators.required, Validators.minLength(3)])
+      this.preview = response.image
+
+      this.formUpdateCate.setValue({
+        name: response.name,
+        slug: response.slug,
+        image: null
       })
     })
+  }
+
+  changeImage(event: Event) {
+    this.image = (event.target as HTMLInputElement).files as FileList;
+
+    if (this.image.length) {
+      const file = this.image[0];
+
+      const reader = new FileReader()
+
+      reader.onload = () => this.preview = reader.result;
+      reader.readAsDataURL(file);
+    }
+  }
+
+  changeName(event: Event) {
+    const name = (event.target as HTMLInputElement).value;
+    
+    this.slug.nativeElement.value = slugify(name, { lower: true});
   }
 
 }
