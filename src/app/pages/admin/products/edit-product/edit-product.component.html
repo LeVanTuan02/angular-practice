@@ -14,10 +14,16 @@
   <form (ngSubmit)="handleUpdateProduct()" [formGroup]="formUpdateProduct" *ngIf="formUpdateProduct">
     <div class="mb-3">
       <label for="name" class="form-label">Tên SP</label>
-      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nhập tên SP">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+        placeholder="Nhập tên SP"
+      >
       <div class="form-text" *ngIf="formUpdateProduct.get('name')?.invalid && (formUpdateProduct.get('name')?.dirty || formUpdateProduct.get('name')?.touched)">
         <p class="text-danger" *ngIf="formUpdateProduct.get('name')?.hasError('required')">Vui lòng nhập tên SP</p>
-        <p class="text-danger" *ngIf="formUpdateProduct.get('name')?.hasError('minlength')">Tên SP tối thiểu 3 ký tự</p>
+        <p class="text-danger" *ngIf="formUpdateProduct.get('name')?.hasError('minlength')">Vui lòng nhập tối thiểu 3 ký tự </p>
       </div>
     </div>
   
@@ -30,6 +36,7 @@
         id="price"
         placeholder="Nhập giá SP"
       >
+
       <div class="form-text" *ngIf="formUpdateProduct.get('price')?.invalid && (formUpdateProduct.get('price')?.dirty || formUpdateProduct.get('price')?.touched)">
         <p class="text-danger" *ngIf="formUpdateProduct.get('price')?.hasError('required')">Vui lòng nhập giá SP</p>
       </div>
@@ -37,7 +44,17 @@
     
     <div class="mb-3">
       <label for="image" class="form-label">Ảnh SP</label>
-      <input class="form-control" type="file" id="image" (change)="handleChangeImage($event)">
+      <input
+        class="form-control"
+        type="file"
+        formControlName="image"
+        id="image"
+        (change)="changeImage($event)"
+      >
+
+      <div class="form-text" *ngIf="formUpdateProduct.get('image')?.invalid && (formUpdateProduct.get('image')?.dirty || formUpdateProduct.get('image')?.touched)">
+        <p class="text-danger" *ngIf="formUpdateProduct.get('image')?.hasError('required')">Vui lòng chọn ảnh SP</p>
+      </div>
     </div>
 
     <div class="mb-3">
@@ -49,12 +66,24 @@
       <label for="category" class="form-label">Danh mục SP</label>
       <select formControlName="categoryId" class="form-select">
         <option value="">Chọn danh mục</option>
-        <option [value]="cate.id" *ngFor="let cate of listCategory">{{ cate.name }}</option>
+        <option [value]="cate.id" *ngFor="let cate of categories">{{ cate.name }}</option>
       </select>
 
       <div class="form-text" *ngIf="formUpdateProduct.get('categoryId')?.invalid && (formUpdateProduct.get('categoryId')?.dirty || formUpdateProduct.get('categoryId')?.touched)">
-      <p class="text-danger" *ngIf="formUpdateProduct.get('categoryId')?.hasError('required')">Vui lòng chọn danh mục SP</p>
+        <p class="text-danger" *ngIf="formUpdateProduct.get('categoryId')?.hasError('required')">Vui lòng chọn danh mục SP</p>
+      </div>
     </div>
+
+    <div class="mb-3">
+      <label for="status" class="form-label">Trạng thái SP</label>
+      <select formControlName="status" id="status" class="form-select">
+        <option value="0">Ẩn</option>
+        <option value="1">Hiển thị</option>
+      </select>
+
+      <div class="form-text" *ngIf="formUpdateProduct.get('status')?.invalid && (formUpdateProduct.get('status')?.dirty || formUpdateProduct.get('status')?.touched)">
+        <p class="text-danger" *ngIf="formUpdateProduct.get('status')?.hasError('required')">Vui lòng chọn trạng thái SP</p>
+      </div>
     </div>
   
     <div class="mb-3">

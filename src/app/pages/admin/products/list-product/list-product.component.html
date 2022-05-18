@@ -19,6 +19,7 @@
         <th scope="col">Ảnh SP</th>
         <th scope="col">Giá SP</th>
         <th scope="col">Danh mục SP</th>
+        <th scope="col">Trạng thái</th>
         <th scope="col">Handle</th>
       </tr>
     </thead>
@@ -31,6 +32,12 @@
         </td>
         <td>{{ product.price | formatCurrency }}</td>
         <td>{{ product.category?.name }}</td>
+        <td>
+          <span class="badge bg-primary" *ngIf="product.status; else elseBlock">Hiển thị</span>
+          <ng-template #elseBlock>
+            <span class="badge bg-secondary">Ẩn</span>
+          </ng-template>
+        </td>
         <td>
           <a [routerLink]="['/admin/product', product.id, 'edit']">
             <button class="btn btn-sm btn-primary m-1">Edit</button>

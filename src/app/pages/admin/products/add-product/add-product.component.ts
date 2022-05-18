@@ -1,12 +1,13 @@
-import { CategoryType } from './../../../../models/category';
-import { ProductService } from 'src/app/services/product.service';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { HttpClient } from '@angular/common/http';
+import { environment } from './../../../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { environment } from 'src/environments/environment';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CategoryType } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
 import { UploadFileService } from 'src/app/services/upload-file.service';
+import { ProductService } from 'src/app/services/product.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import slugify from 'slugify';
 
 @Component({
   selector: 'app-add-product',
@@ -16,67 +17,66 @@ import { UploadFileService } from 'src/app/services/upload-file.service';
 export class AddProductComponent implements OnInit {
 
   formAddProduct!: FormGroup
-  listCategory!: CategoryType[]
+  categories!: CategoryType[]
   image!: FileList
-  preview: any = environment.defaultImage
+
+  preview: string | ArrayBuffer | null = environment.defaultImage
 
   constructor(
-    private http: HttpClient,
-    private toast: ToastrService,
-    private router: Router,
+    private categoryService: CategoryService,
+    private upload: UploadFileService,
     private productService: ProductService,
-    private uploadService: UploadFileService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getCategories();
-    
+
     this.formAddProduct = new FormGroup({
       name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       price: new FormControl(null, Validators.required),
-      image: new FormControl("", Validators.required),
+      image: new FormControl(null, Validators.required),
       categoryId: new FormControl("", Validators.required),
+      status: new FormControl("1", Validators.required),
       description: new FormControl(null),
     })
   }
 
-  getCategories() {
-    this.http
-      .get<CategoryType[]>("http://localhost:3003/categories")
-      .subscribe(response => {
-        this.listCategory = response
-      })
-  }
-
-  async onSubmit() {
+  async handleAddProduct() {
+    console.log(this.formAddProduct.value)
     if (this.formAddProduct.valid) {
-      const image = await this.uploadService.uploadImage(this.image).toPromise();
+      const imageUrl = await this.upload.uploadImage(this.image).toPromise();
+      const slug = slugify(this.formAddProduct.value.name, { lower: true, locale: 'vi' });
 
-      this.productService.addProduct({ ...this.formAddProduct.value, image: image.url })
-      .subscribe(() => {
-        this.toast.success("Thêm SP thành công");
-        this.router.navigate(['/admin/product']);
+      this.productService.addProduct({
+        ...this.formAddProduct.value,
+        status: +this.formAddProduct.value.status,
+        categoryId: +this.formAddProduct.value.categoryId,
+        image: imageUrl.url,
+        slug
+      }).subscribe(() => {
+        this.toastr.success("Thêm sản phẩm thành công");
+        this.router.navigate(['/admin/products']);
       })
+
     } else {
       console.log("Invalid");
     }
   }
 
-  changeImage(event: Event) {
-    this.image = ((event.target as HTMLInputElement).files as FileList);
-    
-    if (this.image.length) {
-      const file = this.image[0];
-
-      const reader = new FileReader()
-
-      reader.onload = () => {
-        this.preview = reader.result;
-      }
-
-      reader.readAsDataURL(file);
-    }
+  getCategories() {
+    this.categoryService.getAllCategory().subscribe(response => this.categories = response);
   }
-    
 
+  changeImage(event: Event) {
+    this.image = (event.target as HTMLInputElement).files as FileList;
+    
+    const file = this.image[0];
+
+    const reader = new FileReader();
+
+    reader.onload = () => this.preview = reader.result;
+    reader.readAsDataURL(file); 
+  }
 }

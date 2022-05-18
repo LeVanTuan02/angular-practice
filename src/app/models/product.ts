@@ -7,5 +7,6 @@ export interface ProductType {
     name: string
   },
   image: string,
-  description: string
+  description: string,
+  status: number
 }

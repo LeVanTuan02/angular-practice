@@ -11,7 +11,34 @@
       "slug": "tra-chanh",
       "image": "http://res.cloudinary.com/levantuan/image/upload/v1652859753/assignment-js/yeovtsefkqqfcpi2cdqb.jpg",
       "id": 2
+    },
+    {
+      "name": "Coffee",
+      "slug": "coffee",
+      "image": "http://res.cloudinary.com/levantuan/image/upload/v1652865586/assignment-js/jknowzgelfjdsxumibfm.jpg",
+      "id": 3
     }
   ],
-  "products": []
+  "products": [
+    {
+      "id": 1,
+      "name": "Trà sữa trân châu đường đen",
+      "price": 25000,
+      "categoryId": 2,
+      "description": "Mô tả trà sữa na",
+      "status": 0,
+      "image": "https://res.cloudinary.com/levantuan/image/upload/v1652862678/assignment-js/o3yoxfym8pd84evpirdn.png",
+      "slug": "tra-sua-tran-chau-duong-den"
+    },
+    {
+      "id": 2,
+      "name": "Trà chanh nek",
+      "price": 25000,
+      "categoryId": 2,
+      "description": null,
+      "status": 1,
+      "image": "http://res.cloudinary.com/levantuan/image/upload/v1652864766/assignment-js/wq31kqs6rz4vgge4avak.png",
+      "slug": "tra-chanh-nek"
+    }
+  ]
 }
