@@ -35,12 +35,20 @@
               <ul class="tw-mt-3 tw-grid tw-grid-cols-1 tw-divide-y max-h-[70vh] tw-overflow-y-auto" id="search-product-result"></ul>
             </div>
           </li>
-          <li class="tw-relative after:tw-content-[''] after:tw-absolute after:tw-w-[1px] after:tw-h-3.5 after:tw-bg-gray-50 after:tw-left-3 after:tw-top-1/2 after:tw--translate-y-1/2 tw-uppercase tw-text-sm tw-pl-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
-            <a href="/#/login" class="tw-text-gray-50 tw-no-underline">Đăng nhập</a>
+
+          <li *ngIf="user; else guest" class="tw-relative after:tw-content-[''] after:tw-absolute after:tw-w-[1px] after:tw-h-3.5 after:tw-bg-gray-50 after:tw-left-3 after:tw-top-1/2 after:tw--translate-y-1/2 tw-uppercase tw-text-sm tw-pl-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
+            <a routerLink="{{ user.role ? '/admin' : '/profile' }}" class="tw-text-gray-50 tw-no-underline">Hello, {{ user.name }}</a>
           </li>
-          <li class="tw-relative after:tw-content-[''] after:tw-absolute after:tw-w-[1px] after:tw-h-3.5 after:tw-bg-gray-50 after:tw-left-3 after:tw-top-1/2 after:tw--translate-y-1/2 tw-uppercase tw-text-sm tw-pl-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
-            <a href="/#/register" class="tw-text-gray-50 tw-no-underline">Đăng ký</a>
-          </li>
+
+          <ng-template #guest>
+            <li class="tw-relative after:tw-content-[''] after:tw-absolute after:tw-w-[1px] after:tw-h-3.5 after:tw-bg-gray-50 after:tw-left-3 after:tw-top-1/2 after:tw--translate-y-1/2 tw-uppercase tw-text-sm tw-pl-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
+              <a routerLink="/signin" class="tw-text-gray-50 tw-no-underline">Đăng nhập</a>
+            </li>
+            <li class="tw-relative after:tw-content-[''] after:tw-absolute after:tw-w-[1px] after:tw-h-3.5 after:tw-bg-gray-50 after:tw-left-3 after:tw-top-1/2 after:tw--translate-y-1/2 tw-uppercase tw-text-sm tw-pl-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
+              <a routerLink="/signup"class="tw-text-gray-50 tw-no-underline">Đăng ký</a>
+            </li>
+          </ng-template>
+          
           <li class="header-icon-heart tw-relative after:tw-content-[''] after:tw-absolute after:tw-w-[1px] after:tw-h-3.5 after:tw-bg-gray-50 after:tw-left-3 after:tw-top-1/2 after:tw--translate-y-1/2 tw-uppercase tw-text-base tw-cursor-pointer tw-pl-6 tw-text-gray-50 tw-font-light tw-opacity-80 tw-transition tw-ease-linear tw-duration-200 hover:tw-text-white hover:tw-opacity-100">
             <div class="relative">
               <label for="" id="header-wishlist-label" class="tw-absolute tw-w-4 tw-h-4 tw-bg-green-700 tw-text-xs tw-text-center tw-rounded-full tw--right-3 tw--top-1">10</label>

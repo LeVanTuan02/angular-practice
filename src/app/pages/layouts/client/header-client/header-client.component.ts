@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-header-client',
@@ -8,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HeaderClientComponent implements OnInit {
 
   @Input() scrollTop!: number
+  @Input() user!: User
 
   constructor() { }
 

@@ -1,0 +1,81 @@
+<!-- content -->
+<main>
+  <section class="tw-container tw-max-w-6xl tw-mx-auto tw-px-3">
+    <h1 class="tw-uppercase tw-mt-8 tw-font-semibold tw-text-2xl tw-text-gray-600">Đăng ký</h1>
+    <form action="" class="tw-mb-14" method="POST" [formGroup]="formSignup" (ngSubmit)="onSignup()">
+      <!-- <div class="tw-mt-3">
+        <label for="form__reg-username" class="tw-font-semibold tw-block tw-mb-1">Tên tài khoản *</label>
+        <input type="text" id="form__reg-username" class="shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none" placeholder="VD: demo...">
+        <div class="form__reg-message tw-text-sm tw-text-red-500 tw-mt-0.5"></div>
+      </div> -->
+      <div class="tw-mt-3">
+        <label for="form__reg-fullname" class="tw-font-semibold tw-block tw-mb-1">Họ và tên *</label>
+        <input
+          type="text"
+          id="form__reg-fullname"
+          formControlName="name"
+          class="shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none"
+          placeholder="VD: Lê Văn Tuân..."
+        >
+
+        <div class="form-text" *ngIf="formSignup.get('name')?.invalid && (formSignup.get('name')?.dirty || formSignup.get('name')?.touched)">
+          <p class="text-danger" *ngIf="formSignup.get('name')?.hasError('required')">Vui lòng nhập họ tên</p>
+        </div>
+      </div>
+      <div class="tw-mt-3">
+        <label for="form__reg-email" class="tw-font-semibold tw-block tw-mb-1">Email *</label>
+        <input
+          type="text"
+          id="form__reg-email"
+          formControlName="email"
+          class="shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none"
+          placeholder="VD: user@gmail.com..."
+        >
+
+        <div class="form-text" *ngIf="formSignup.get('email')?.invalid && (formSignup.get('email')?.dirty || formSignup.get('email')?.touched)">
+          <p class="text-danger" *ngIf="formSignup.get('email')?.hasError('required')">Vui lòng nhập email</p>
+          <p class="text-danger" *ngIf="formSignup.get('email')?.hasError('email')">Email không đúng định dạng</p>
+        </div>
+      </div>
+      <!-- <div class="tw-mt-3">
+        <label for="form__reg-phone" class="tw-font-semibold tw-block tw-mb-1">Số điện thoại *</label>
+        <input type="text" id="form__reg-phone" name="form__reg-phone" class="shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none" placeholder="VD: 0347526xxx...">
+        <div class="form__reg-message tw-text-sm tw-text-red-500 tw-mt-0.5"></div>
+      </div> -->
+      <div class="tw-mt-3">
+        <label for="form__reg-password" class="tw-font-semibold tw-block tw-mb-1">Mật khẩu *</label>
+        <input
+          type="password"
+          id="form__reg-password"
+          formControlName="password"
+          class="shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none"
+          placeholder="Mật khẩu"
+        >
+
+        <div class="form-text" *ngIf="formSignup.get('password')?.invalid && (formSignup.get('password')?.dirty || formSignup.get('password')?.touched)">
+          <p class="text-danger" *ngIf="formSignup.get('password')?.hasError('required')">Vui lòng nhập mật khẩu</p>
+          <p class="text-danger" *ngIf="formSignup.get('password')?.hasError('minlength')">Mật khẩu quá yếu, nhập tối thiểu 4 ký tự</p>
+        </div>
+      </div>
+      <div class="tw-mt-3">
+        <label for="form__reg-confirm" class="tw-font-semibold tw-block tw-mb-1">Xác nhận mật khẩu *</label>
+        <input
+          type="password"
+          id="form__reg-confirm"
+          formControlName="confirm"
+          class="shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none"
+          placeholder="Nhập lại mật khẩu"
+        >
+
+        <div class="form-text" *ngIf="formSignup.get('confirm')?.invalid && (formSignup.get('confirm')?.dirty || formSignup.get('confirm')?.touched)">
+          <p class="text-danger" *ngIf="formSignup.get('confirm')?.hasError('required')">Vui lòng nhập mật khẩu xác nhận</p>
+          <p class="text-danger" *ngIf="formSignup.get('confirm')?.hasError('mustMatch')">Mật khẩu xác nhận không chính xác</p>
+        </div>
+      </div>
+      <button [disabled]="formSignup.invalid" class="btn-signup tw-select-none tw-mt-8 tw-px-3 tw-py-2 tw-bg-orange-400 tw-font-semibold tw-uppercase tw-text-white tw-text-sm tw-transition tw-ease-linear tw-duration-300 hover:shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">Đăng ký</button>
+      <p class="tw-mt-1"> Đã có tài khoản? <a routerLink="/signin">Đăng nhập ngay</a>
+      </p>
+    </form>
+  </section>
+</main>
+<!-- end content -->

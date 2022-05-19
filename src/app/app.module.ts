@@ -29,6 +29,8 @@ import { ClientHomeFeedbackComponent } from './components/client/client-home-fee
 import { AdminLayoutComponent } from './pages/layouts/admin/admin-layout/admin-layout.component';
 import { AdminHeaderComponent } from './pages/layouts/admin/admin-header/admin-header.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
+import { SignupComponent } from './pages/client/auth/signup/signup.component';
+import { SigninComponent } from './pages/client/auth/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-das
     ClientHomeFeedbackComponent,
     AdminLayoutComponent,
     AdminHeaderComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,

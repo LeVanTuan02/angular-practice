@@ -1,0 +1,3 @@
+.btn-signup:disabled {
+  @apply tw-opacity-25
+}

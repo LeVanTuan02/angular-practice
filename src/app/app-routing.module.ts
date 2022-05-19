@@ -1,3 +1,5 @@
+import { SignupComponent } from './pages/client/auth/signup/signup.component';
+import { SigninComponent } from './pages/client/auth/signin/signin.component';
 import { ListCategoryComponent } from './pages/admin/category/list-category/list-category.component';
 import { EditProductComponent } from './pages/admin/products/edit-product/edit-product.component';
 import { ListProductComponent } from './pages/admin/products/list-product/list-product.component';
@@ -10,15 +12,18 @@ import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-das
 import { AddProductComponent } from './pages/admin/products/add-product/add-product.component';
 import { AddCategoryComponent } from './pages/admin/category/add-category/add-category.component';
 import { EditCategoryComponent } from './pages/admin/category/edit-category/edit-category.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
     path: "", component: ClientLayoutComponent, children: [
-      { path: "", component: HomeComponent }
+      { path: "", component: HomeComponent },
+      { path: "signin", component: SigninComponent },
+      { path: "signup", component: SignupComponent }
     ]
   },
   {
-    path: "admin", component: AdminLayoutComponent, children: [
+    path: "admin", component: AdminLayoutComponent, canActivate: [AuthGuard], children: [
       { path: "", component: AdminDashboardComponent },
       { path: "products", component: ListProductComponent },
       { path: "product/add", component: AddProductComponent },
