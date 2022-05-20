@@ -58,7 +58,7 @@
       </div>
       <div class="tw-flex tw-justify-between">
         <div>
-          <form action="" id="form__add-cart" data-id="${id}">
+          <form action="" id="form__add-cart" [formGroup]="formAddcart" (ngSubmit)="handleAddCart()">
             <div class="tw-flex tw-items-center tw-mt-2">
               <label for="" class="tw-min-w-[80px] tw-font-bold tw-text-sm">Đá</label>
               <ul class="tw-flex">
@@ -133,11 +133,15 @@
               <p class="form__add-cart-total-price tw-h-0 tw-overflow-hidden tw-transition-all tw-ease-linear tw-duration-100 tw-mt-6 tw-border-t tw-border-dashed tw-pt-2 tw-text-xl tw-font-semibold"></p>
               <div class="tw-flex tw-mt-2 tw-items-center">
                 <div class="tw-flex tw-items-center tw-h-9">
-                  <button type="button" id="form__add-cart-qnt-minus" class="tw-px-2 tw-bg-gray-100 tw-border-gray-200 tw-h-full tw-border-l border-y tw-transition tw-ease-linear tw-duration-300 tw-hover:tw-shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">-</button>
-                  <input type="text" id="form__add-cart-qnt" class="tw-border tw-border-gray-200 tw-h-full tw-w-10 tw-text-center tw-outline-none shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] tw-hover:tw-shadow-none focus:tw-shadow-[0_0_5px_#ccc]" value="1">
-                  <button type="button" id="form__add-cart-qnt-plus" class="tw-px-2 tw-bg-gray-100 tw-border-gray-200 tw-h-full tw-border-r border-y tw-transition tw-ease-linear tw-duration-300 tw-hover:tw-shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">+</button>
+                  <button type="button" (click)="onDecrease()" class="tw-px-2 tw-bg-gray-100 tw-border-gray-200 tw-h-full tw-border-l border-y tw-transition tw-ease-linear tw-duration-300 tw-hover:tw-shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">-</button>
+                  <input type="text" id="form__add-cart-qnt" class="tw-border tw-border-gray-200 tw-h-full tw-w-10 tw-text-center tw-outline-none shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] tw-hover:tw-shadow-none focus:tw-shadow-[0_0_5px_#ccc]" formControlName="quantity">
+                  <button type="button" (click)="onIncrease()" class="tw-px-2 tw-bg-gray-100 tw-border-gray-200 tw-h-full tw-border-r border-y tw-transition tw-ease-linear tw-duration-300 tw-hover:tw-shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">+</button>
                 </div>
-                <button id="form__add-cart-btn" class="tw-ml-2 tw-px-3 tw-py-2 tw-bg-orange-400 tw-font-semibold tw-uppercase tw-text-white tw-text-sm tw-transition tw-ease-linear tw-duration-300 tw-hover:tw-shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">Thêm vào giỏ hàng</button>
+                <button class="tw-ml-2 tw-px-3 tw-py-2 tw-bg-orange-400 tw-font-semibold tw-uppercase tw-text-white tw-text-sm tw-transition tw-ease-linear tw-duration-300 tw-hover:tw-shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">Thêm vào giỏ hàng</button>
+              </div>
+
+              <div class="form-text" *ngIf="formAddcart.get('quantity')?.invalid && (formAddcart.get('quantity')?.dirty || formAddcart.get('quantity')?.touched)">
+                <p class="text-danger">Vui lòng nhập lại giá</p>
               </div>
             </div>
           </form>

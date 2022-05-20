@@ -15,6 +15,7 @@ import { EditCategoryComponent } from './pages/admin/category/edit-category/edit
 import { AuthGuard } from './guard/auth.guard';
 import { AboutComponent } from './pages/client/about/about.component';
 import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
+import { CartComponent } from './pages/client/cart/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
       { path: "signin", component: SigninComponent },
       { path: "signup", component: SignupComponent },
       { path: "about", component: AboutComponent },
-      { path: "san-pham/:slug", component: ProductDetailComponent }
+      { path: "san-pham/:slug", component: ProductDetailComponent },
+      { path: "cart", component: CartComponent }
     ]
   },
   {

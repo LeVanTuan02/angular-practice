@@ -34,6 +34,9 @@ import { SigninComponent } from './pages/client/auth/signin/signin.component';
 import { AboutComponent } from './pages/client/about/about.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
+import { CartComponent } from './pages/client/cart/cart/cart.component';
+import { CheckOutComponent } from './pages/client/cart/check-out/check-out.component';
+import { FinishComponent } from './pages/client/cart/finish/finish.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { ProductDetailComponent } from './pages/client/product-detail/product-de
     SignupComponent,
     SigninComponent,
     AboutComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CartComponent,
+    CheckOutComponent,
+    FinishComponent
   ],
   imports: [
     BrowserModule,
