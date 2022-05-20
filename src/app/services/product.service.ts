@@ -12,8 +12,10 @@ export class ProductService {
     private http: HttpClient
   ) { }
 
-  getAll() {
-    return this.http.get<ProductType[]>(`${environment.apiUrl}/products/?_expand=category`);
+  getAll(start = 0, limit = 0) {
+    let url = `${environment.apiUrl}/products/?_expand=category`;
+    if (limit) url += `&_start=${start}&_limit=${limit}`;
+    return this.http.get<ProductType[]>(url);
   }
 
   getProduct(id: string){

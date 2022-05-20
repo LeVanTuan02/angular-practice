@@ -10,10 +10,6 @@
   class="carousel" 
   #slickModal="slick-carousel" 
   [config]="slideConfig" 
-  (init)="slickInit($event)"
-  (breakpoint)="breakpoint($event)"
-  (afterChange)="afterChange($event)"
-  (beforeChange)="beforeChange($event)"
 >
   <div ngxSlickItem *ngFor="let slide of sliders" class="slide">
     <a href="${item.url}" title="Title" [ngStyle]="{'background-image': 'url('+ slide.image +')'}" class="tw-block tw-pt-[34%] tw-bg-center tw-bg-cover tw-bg-no-repeat"></a>

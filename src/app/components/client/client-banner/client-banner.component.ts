@@ -19,29 +19,5 @@ export class ClientBannerComponent implements OnInit {
   }
 
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1, "autoplay": true, "arrows": false};
-  
-  addSlide() {
-    this.sliders.push({img: "http://placehold.it/350x150/777777"})
-  }
-  
-  removeSlide() {
-    this.sliders.length = this.sliders.length - 1;
-  }
-  
-  slickInit(e: any) {
-    console.log('slick initialized');
-  }
-  
-  breakpoint(e: any) {
-    console.log('breakpoint');
-  }
-  
-  afterChange(e: any) {
-    console.log('afterChange');
-  }
-  
-  beforeChange(e: any) {
-    console.log('beforeChange');
-  }
 
 }

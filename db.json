@@ -23,10 +23,10 @@
     {
       "id": 1,
       "name": "Trà sữa trân châu đường đen",
-      "price": 25000,
+      "price": 56000,
       "categoryId": 2,
       "description": "Mô tả trà sữa na",
-      "status": 0,
+      "status": 1,
       "image": "https://res.cloudinary.com/levantuan/image/upload/v1652862678/assignment-js/o3yoxfym8pd84evpirdn.png",
       "slug": "tra-sua-tran-chau-duong-den"
     },

@@ -10,8 +10,10 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCategory() {
-    return this.http.get<CategoryType[]>(`${environment.apiUrl}/categories/?_sort=id&_order=desc`);
+  getAllCategory(limit = 0) {
+    let url = `${environment.apiUrl}/categories/?_sort=id&_order=desc`;
+    if (limit) url += `&_limit=${limit}`;
+    return this.http.get<CategoryType[]>(url);
   }
 
   removeCategory(id?: number) {
