@@ -13,13 +13,15 @@ import { AddProductComponent } from './pages/admin/products/add-product/add-prod
 import { AddCategoryComponent } from './pages/admin/category/add-category/add-category.component';
 import { EditCategoryComponent } from './pages/admin/category/edit-category/edit-category.component';
 import { AuthGuard } from './guard/auth.guard';
+import { AboutComponent } from './pages/client/about/about.component';
 
 const routes: Routes = [
   {
     path: "", component: ClientLayoutComponent, children: [
       { path: "", component: HomeComponent },
       { path: "signin", component: SigninComponent },
-      { path: "signup", component: SignupComponent }
+      { path: "signup", component: SignupComponent },
+      { path: "about", component: AboutComponent }
     ]
   },
   {

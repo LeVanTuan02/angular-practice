@@ -31,6 +31,8 @@ import { AdminHeaderComponent } from './pages/layouts/admin/admin-header/admin-h
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { SignupComponent } from './pages/client/auth/signup/signup.component';
 import { SigninComponent } from './pages/client/auth/signin/signin.component';
+import { AboutComponent } from './pages/client/about/about.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { SigninComponent } from './pages/client/auth/signin/signin.component';
     AdminHeaderComponent,
     AdminDashboardComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ import { SigninComponent } from './pages/client/auth/signin/signin.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

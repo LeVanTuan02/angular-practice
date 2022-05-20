@@ -1,7 +1,26 @@
-<section>
+<!-- <section>
   <ul id="banner" class="tw-relative tw-group">
     <li>
       <a href="${item.url}" title="Title" style="background-image: url(https://res.cloudinary.com/levantuan/image/upload/v1652851763/asm-react-ts/82886864_118626926319074_6527079220118552576_n_gbfreb.png);" class="tw-block tw-pt-[34%] tw-bg-center tw-bg-cover tw-bg-no-repeat"></a>
     </li>
   </ul>
-</section>
+</section> -->
+
+<ngx-slick-carousel
+  class="carousel" 
+  #slickModal="slick-carousel" 
+  [config]="slideConfig" 
+  (init)="slickInit($event)"
+  (breakpoint)="breakpoint($event)"
+  (afterChange)="afterChange($event)"
+  (beforeChange)="beforeChange($event)"
+>
+  <div ngxSlickItem *ngFor="let slide of sliders" class="slide">
+    <a href="${item.url}" title="Title" [ngStyle]="{'background-image': 'url('+ slide.image +')'}" class="tw-block tw-pt-[34%] tw-bg-center tw-bg-cover tw-bg-no-repeat"></a>
+  </div>
+</ngx-slick-carousel>
+
+<!-- <button (click)="addSlide()">Add</button>
+<button (click)="removeSlide()">Remove</button>
+<button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
+<button (click)="slickModal.unslick()">unslick</button> -->
