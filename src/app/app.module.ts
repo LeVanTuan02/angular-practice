@@ -33,6 +33,7 @@ import { SignupComponent } from './pages/client/auth/signup/signup.component';
 import { SigninComponent } from './pages/client/auth/signin/signin.component';
 import { AboutComponent } from './pages/client/about/about.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     AdminDashboardComponent,
     SignupComponent,
     SigninComponent,
-    AboutComponent
+    AboutComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

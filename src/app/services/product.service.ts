@@ -33,4 +33,9 @@ export class ProductService {
   updateProduct(product: ProductType) {
     return this.http.put(`${environment.apiUrl}/products/${product.id}`, product);
   }
+
+  getBySlug(slug: string) {
+    const url = `${environment.apiUrl}/products/?slug=${slug}&_expand=category`;
+    return this.http.get<ProductType[]>(url);
+  }
 }

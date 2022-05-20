@@ -1,0 +1,5 @@
+.form__add-cart-ice:checked ~ label,
+.form__add-cart-sugar:checked ~ label,
+.form__add-cart-size:checked ~ label{
+  @apply tw-shadow-md tw-border-gray-500 tw-text-black
+}

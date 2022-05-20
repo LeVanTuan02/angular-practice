@@ -8,5 +8,6 @@ export interface ProductType {
   },
   image: string,
   description: string,
-  status: number
+  status: number,
+  slug?: string
 }
