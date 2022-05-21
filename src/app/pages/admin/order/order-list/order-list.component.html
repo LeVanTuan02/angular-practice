@@ -1,0 +1,42 @@
+<div class="container-lg p-3">
+  <div class="row align-items-center">
+    <div class="col">
+      <h2>Danh sách đơn hàng</h2>
+    </div>
+  </div>
+
+  <table class="table" *ngIf="orderList.length >= 1; else emptyOrder">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Total Price</th>
+        <th scope="col">Date Created</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orderList; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <p>{{ order.customerName }}</p>
+          <p>{{ order.phone }}</p>
+          <p>{{ order.address }}</p>
+        </td>
+        <td>{{ order.totalPrice | formatCurrency }}</td>
+        <td>
+          <p class="text-primary">{{ order.createdAt | formatDate }}</p>
+        </td>
+        <td>
+          <a [routerLink]="['/admin/order', order.id, 'detail']">
+            <button class="btn btn-primary btn-sm">Detail</button>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #emptyOrder>
+    <p>Không tồn tại đơn hàng nào!</p>
+  </ng-template>
+</div>

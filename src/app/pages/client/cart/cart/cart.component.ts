@@ -9,11 +9,13 @@ import Swal from 'sweetalert2';
 })
 export class CartComponent implements OnInit {
 
-  cartList: any = JSON.parse(localStorage.getItem("cart") as string);
+  cartList: any = JSON.parse(localStorage.getItem("cart") as string) || [];
+  totalPrice!: number
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.totalPrice = this.cartService.handleTotalPrice();
   }
 
   handleRemoveCart(id: string) {
@@ -36,10 +38,26 @@ export class CartComponent implements OnInit {
           )
 
           this.cartList = this.cartList.filter((item: any) => item.id !== id);
+          this.totalPrice = this.cartService.handleTotalPrice();
         });
       }
     })
-    
   }
+
+  onIncrease(cartId: string) {
+    this.cartService.increaseQnt(cartId, newCart => {
+      this.cartList = newCart;
+      this.totalPrice = this.cartService.handleTotalPrice();
+    });
+  }
+
+  onDecrease(cartId: string) {
+    this.cartService.decreaseQnt(cartId, newCart => {
+      this.cartList = newCart;
+      this.totalPrice = this.cartService.handleTotalPrice();
+    });
+  }
+
+  
 
 }

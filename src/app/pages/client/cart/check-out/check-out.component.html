@@ -1,1 +1,155 @@
-<p>check-out works!</p>
+<main>
+  <section class="tw-container tw-max-w-6xl tw-mx-auto tw-px-3 tw-mt-10">
+    <app-client-cart-nav></app-client-cart-nav>
+  </section>
+  <form (ngSubmit)="handleCheckout()" [formGroup]="formCheckout" method="POST" class="tw-container tw-max-w-6xl tw-mx-auto tw-px-3 tw-mt-10 tw-mb-9 tw-grid tw-grid-cols-12 tw-gap-5">
+    <div class="tw-col-span-12 lg:tw-col-span-8 tw-border-t-2 tw-pt-3">
+      <div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+        <h3 class="tw-uppercase tw-text-gray-500 tw-font-semibold tw-text-lg">Thông tin thanh toán</h3>
+        <button type="button" id="btn-choose-address" class="tw-px-3 tw-py-2 tw-bg-orange-400 tw-font-semibold tw-uppercase tw-text-white tw-text-sm tw-transition tw-ease-linear tw-duration-300 hover:shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">Sử dụng địa chỉ khác</button>
+      </div>
+      <div class="tw-grid tw-grid-cols-12 tw-gap-x-4">
+        <div class="tw-col-span-6 tw-mb-3">
+          <label for="cart__checkout-form-name" class="tw-font-semibold tw-mb-1 tw-block">Họ và tên *</label>
+          <input formControlName="name" type="text" id="cart__checkout-form-name" class="tw-shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:tw-shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none" placeholder="Nhập họ tên">
+          <div class="tw-text-sm tw-mt-0.5 tw-text-red-500" *ngIf="formCheckout.get('name')?.invalid && (formCheckout.get('name')?.dirty || formCheckout.get('name')?.touched)">
+            <p *ngIf="formCheckout.get('name')?.hasError('required')">Vui lòng nhập họ tên</p>
+          </div>
+        </div>
+
+        <div class="tw-col-span-6 tw-mb-3">
+          <label for="cart__checkout-form-phone" class="tw-font-semibold tw-mb-1 tw-block">Điện thoại *</label>
+          <input formControlName="phone" type="text" id="cart__checkout-form-phone" class="tw-shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:tw-shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none" placeholder="Số điện thoại người nhận hàng">
+          <div class="tw-text-sm tw-mt-0.5 tw-text-red-500" *ngIf="formCheckout.get('phone')?.invalid && (formCheckout.get('phone')?.dirty || formCheckout.get('phone')?.touched)">
+            <p *ngIf="formCheckout.get('phone')?.hasError('required')">Vui lòng nhập số điện thoại</p>
+          </div>
+        </div>
+
+        <div class="tw-col-span-12 tw-mb-3">
+          <label for="cart__checkout-form-email" class="tw-font-semibold tw-mb-1 tw-block">Email *</label>
+          <input formControlName="email" type="email" id="cart__checkout-form-email" class="tw-shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:tw-shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none" placeholder="Email người nhận hàng">
+          <div class="tw-text-sm tw-mt-0.5 tw-text-red-500" *ngIf="formCheckout.get('email')?.invalid && (formCheckout.get('email')?.dirty || formCheckout.get('email')?.touched)">
+            <p *ngIf="formCheckout.get('email')?.hasError('required')">Vui lòng nhập họ tên</p>
+            <p *ngIf="formCheckout.get('email')?.hasError('email')">Email không đúng định dạng</p>
+          </div>
+        </div>
+
+        <!-- <div class="tw-col-span-12 md:tw-col-span-4 tw-mb-3 tw-relative">
+          <label for="cart__checkout-province" class="tw-font-semibold tw-mb-1 tw-block">Tỉnh/Thành phố *</label>
+          <select id="cart__checkout-province" class="tw-shadow-[inset_0_-1.4em_1em_0_rgba(0,0,0,0.02)] hover:tw-shadow-none hover:tw-cursor-default focus:tw-shadow-none focus:tw-cursor-text tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none">
+            <option value="">-- Chọn Tỉnh/TP --</option>
+            <option value="${item.code}"></option>
+          </select>
+          <div class="tw-text-sm tw-mt-0.5 tw-text-red-500"></div>
+        </div>
+
+        <div class="tw-col-span-12 md:tw-col-span-4 tw-mb-3 tw-relative">
+          <label for="cart__checkout-district" class="tw-font-semibold tw-mb-1 tw-block">Quận/Huyện *</label>
+          <select id="cart__checkout-district" class="tw-shadow-[inset_0_-1.4em_1em_0_rgba(0,0,0,0.02)] hover:tw-shadow-none hover:tw-cursor-default focus:tw-shadow-none focus:tw-cursor-text tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none">
+            <option value="">-- Chọn Quận/Huyện --</option>
+            <option value="${item.code}"></option>
+          </select>
+          <div class="tw-text-sm tw-mt-0.5 tw-text-red-500"></div>
+        </div>
+
+        <div class="tw-col-span-12 md:tw-col-span-4 tw-mb-3 tw-relative">
+          <label for="cart__checkout-ward" class="tw-font-semibold tw-mb-1 tw-block">Xã/Phường *</label>
+          <select id="cart__checkout-ward" class="tw-shadow-[inset_0_-1.4em_1em_0_rgba(0,0,0,0.02)] hover:tw-shadow-none hover:tw-cursor-default focus:tw-shadow-none focus:tw-cursor-text tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none">
+            <option value="">-- Chọn Xã/Phường --</option>
+            <option value="${item.code}"></option>
+          </select>
+          <div class="tw-text-sm tw-mt-0.5 tw-text-red-500"></div>
+        </div>
+
+        <div class="tw-col-span-12 md:tw-col-span-4 tw-mb-3 tw-relative">
+          <label for="cart__checkout-province" class="tw-font-semibold tw-mb-1 tw-block">Tỉnh/Thành phố *</label>
+          <select id="cart__checkout-province" class="tw-shadow-[inset_0_-1.4em_1em_0_rgba(0,0,0,0.02)] hover:tw-shadow-none hover:tw-cursor-default focus:tw-shadow-none focus:tw-cursor-text tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none">
+            <option value="">-- Chọn Tỉnh/TP --</option>
+            <option value="${item.code}"></option>
+          </select>
+          <div class="tw-text-sm tw-mt-0.5 tw-text-red-500"></div>
+        </div>
+
+        <div class="tw-col-span-12 md:tw-col-span-4 tw-mb-3 tw-relative">
+          <label for="cart__checkout-district" class="tw-font-semibold tw-mb-1 tw-block">Quận/Huyện *</label>
+          <select id="cart__checkout-district" class="tw-shadow-[inset_0_-1.4em_1em_0_rgba(0,0,0,0.02)] hover:tw-shadow-none hover:tw-cursor-default focus:tw-shadow-none focus:tw-cursor-text tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none">
+            <option value="">-- Chọn Quận/Huyện --</option>
+          </select>
+          <div class="tw-text-sm tw-mt-0.5 tw-text-red-500"></div>
+        </div>
+
+        <div class="tw-col-span-12 md:tw-col-span-4 tw-mb-3 tw-relative">
+          <label for="cart__checkout-ward" class="tw-font-semibold tw-mb-1 tw-block">Xã/Phường *</label>
+          <select id="cart__checkout-ward" class="tw-shadow-[inset_0_-1.4em_1em_0_rgba(0,0,0,0.02)] hover:tw-shadow-none hover:tw-cursor-default focus:tw-shadow-none focus:tw-cursor-text tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none">
+            <option value="">-- Chọn Xã/Phường --</option>
+          </select>
+          <div class="tw-text-sm tw-mt-0.5 tw-text-red-500"></div>
+        </div> -->
+
+        <div class="tw-col-span-12 tw-mb-3">
+          <label for="cart__checkout-form-add" class="tw-font-semibold tw-mb-1 tw-block">Địa chỉ cụ thể *</label>
+          <input formControlName="address" type="text" id="cart__checkout-form-add" class="tw-shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:tw-shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-px-2 tw-h-10 tw-text-sm tw-outline-none" placeholder="VD: Số xx, Ngõ xx, Phú Kiều">
+          <div class="tw-text-sm tw-mt-0.5 tw-text-red-500" *ngIf="formCheckout.get('address')?.invalid && (formCheckout.get('address')?.dirty || formCheckout.get('address')?.touched)">
+            <p *ngIf="formCheckout.get('address')?.hasError('required')">Vui lòng nhập địa chỉ</p>
+          </div>
+        </div>
+
+        <div class="tw-col-span-12 tw-mb-3 tw-flex tw-items-center">
+          <input type="checkbox" id="cart__checkout-save-address">
+          <label for="cart__checkout-save-address" class="tw-ml-1 tw-block text-md">Lưu thông tin thanh toán?</label>
+        </div>
+      </div>
+
+      <h3 class="tw-uppercase tw-text-gray-500 tw-font-semibold tw-my-2 tw-text-lg">Thông tin bổ sung</h3>
+      <div class="tw-grid tw-grid-cols-12">
+        <div class="tw-col-span-12 tw-mb-3">
+          <label for="cart__checkout-form-msg" class="tw-font-semibold tw-mb-1 tw-block">Ghi chú đơn hàng (tuỳ chọn)</label>
+          <textarea formControlName="message" id="cart__checkout-form-msg" cols="30" rows="5" class="tw-shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:tw-shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-p-2 tw-text-sm tw-outline-none" placeholder="Ghi chú về đơn hàng"></textarea>
+        </div>
+      </div>
+
+    </div>
+    <div class="tw-col-span-12 lg:tw-col-span-4 tw-border-l tw-p-4 tw-border-2 border-[#D9A953] min-h-40">
+      <h3 class="tw-uppercase tw-text-gray-500 tw-font-semibold tw-mb-3 tw-text-lg">Đơn hàng của bạn</h3>
+      <table class="tw-w-full tw-text-left">
+        <thead>
+          <tr>
+            <th class="tw-uppercase tw-text-gray-500 tw-text-sm tw-pb-1.5 tw-border-b-2">Sản phẩm</th>
+            <th class="tw-uppercase tw-text-gray-500 tw-text-sm tw-pb-1.5 tw-border-b-2 tw-text-right">Tổng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tw-border-b" *ngFor="let cart of cartList">
+            <td class="tw-text-sm tw-leading-5 tw-py-3 tw-text-gray-500 tw-pr-1">
+              <p class="tw-text-base">
+                <span>{{ cart.name }}</span>
+                <strong> x {{ cart.quantity }}</strong>
+              </p>
+              <!-- <p class="tw-uppercase">Đá: %</p>
+              <p class="tw-uppercase">Đường: %</p>
+              <p class="tw-uppercase">Size: </p>
+              <p class="tw-uppercase"></p> -->
+            </td>
+            <td class="tw-py-3 tw-font-semibold tw-text-right tw-pl-1">{{ cart.quantity * cart.price | formatCurrency }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <!-- <tr class="tw-border-b">
+            <td class="tw-font-semibold tw-text-sm tw-py-2">Tạm tính</td>
+            <td class="tw-font-semibold tw-text-right">price</td>
+          </tr>
+          <tr class="tw-border-b">
+            <td class="tw-font-semibold tw-text-sm tw-py-2"> Voucher <strong class="tw-ml-1 tw-mr-2">VOUCHER</strong>
+            </td>
+            <td class="tw-py-2 tw-text-right tw-font-semibold">- 30%</td>
+          </tr> -->
+          <tr class="tw-border-b">
+            <td class="tw-font-semibold tw-text-sm tw-py-2">Tổng</td>
+            <td class="tw-font-semibold tw-text-right">{{ totalPrice | formatCurrency }}</td>
+          </tr>
+        </tfoot>
+      </table>
+      <button [disabled]="formCheckout.invalid" class="tw-mt-4 tw-px-3 tw-py-2 tw-bg-orange-400 tw-font-semibold tw-uppercase tw-text-white tw-text-sm tw-transition tw-ease-linear tw-duration-300 hover:shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">Đặt hàng</button>
+    </div>
+  </form>
+</main>

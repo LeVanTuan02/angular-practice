@@ -37,6 +37,10 @@ import { ProductDetailComponent } from './pages/client/product-detail/product-de
 import { CartComponent } from './pages/client/cart/cart/cart.component';
 import { CheckOutComponent } from './pages/client/cart/check-out/check-out.component';
 import { FinishComponent } from './pages/client/cart/finish/finish.component';
+import { ClientCartNavComponent } from './components/client/client-cart-nav/client-cart-nav.component';
+import { OrderListComponent } from './pages/admin/order/order-list/order-list.component';
+import { OrderDetailComponent } from './pages/admin/order/order-detail/order-detail.component';
+import { FormatDatePipe } from './helper/pipe/format-date.pipe';
 
 @NgModule({
   declarations: [
@@ -68,7 +72,11 @@ import { FinishComponent } from './pages/client/cart/finish/finish.component';
     ProductDetailComponent,
     CartComponent,
     CheckOutComponent,
-    FinishComponent
+    FinishComponent,
+    ClientCartNavComponent,
+    OrderListComponent,
+    OrderDetailComponent,
+    FormatDatePipe
   ],
   imports: [
     BrowserModule,

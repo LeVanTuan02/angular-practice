@@ -1,6 +1,8 @@
 <!-- content -->
-<main>
-  <section class="tw-container tw-max-w-6xl tw-mx-auto tw-px-3 tw-mt-10"> cartNav </section>
+<main class="tw-min-h-[260px]">
+  <section class="tw-container tw-max-w-6xl tw-mx-auto tw-px-3 tw-mt-10">
+    <app-client-cart-nav></app-client-cart-nav>
+  </section>
   <section *ngIf="cartList.length; else emptyCart" class="tw-container tw-max-w-6xl tw-mx-auto tw-px-3 tw-mt-10 tw-grid tw-grid-cols-12 tw-mb-9">
     <form action="" method="POST" id="cart__detail-form" class="tw-col-span-12 lg:tw-col-span-8 lg:tw-pr-6">
       <table class="tw-table-auto tw-w-full tw-text-left tw-border-collapse">
@@ -26,19 +28,19 @@
             </td>
             <td class="tw-p-2">
               <a [routerLink]="['/san-pham', cart.slug]" class="tw-font-semibold">{{ cart.name }}</a>
-              <div class="tw-text-sm">
+              <!-- <div class="tw-text-sm">
                 <p>Đá: 30%</p>
                 <p>Đường: 30%</p>
                 <p>Size: Size</p>
                 <p>Topping: Không chọn Topping</p>
-              </div>
+              </div> -->
             </td>
             <td class="tw-font-bold">{{ cart.price | formatCurrency }}</td>
             <td class="tw-p-2">
               <div class="tw-flex tw-items-center tw-h-9" id="cart__detail-qnt-wrap">
-                <button type="button" class="cart__detail-qnt-btn btn-decrease cart__detail-btn-decrease tw-px-2 tw-bg-gray-100 tw-border-gray-200 tw-h-full tw-border-l border-y tw-transition tw-ease-linear tw-duration-300 hover:tw-shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">-</button>
+                <button type="button" (click)="onDecrease(cart.id)" class="cart__detail-qnt-btn btn-decrease cart__detail-btn-decrease tw-px-2 tw-bg-gray-100 tw-border-gray-200 tw-h-full tw-border-l border-y tw-transition tw-ease-linear tw-duration-300 hover:tw-shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">-</button>
                 <input type="text" class="cart__detail-qnt tw-border tw-border-gray-200 tw-h-full tw-w-10 tw-text-center tw-outline-none tw-shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] hover:tw-shadow-none focus:tw-shadow-[0_0_5px_#ccc]" value="{{ cart.quantity }}">
-                <button type="button" class="cart__detail-qnt-btn btn-increase cart__detail-btn-increase tw-px-2 tw-bg-gray-100 tw-border-gray-200 tw-h-full tw-border-r border-y tw-transition tw-ease-linear tw-duration-300 hover:tw-shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">+</button>
+                <button type="button" class="cart__detail-qnt-btn btn-increase cart__detail-btn-increase tw-px-2 tw-bg-gray-100 tw-border-gray-200 tw-h-full tw-border-r border-y tw-transition tw-ease-linear tw-duration-300 hover:tw-shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]" (click)="onIncrease(cart.id)">+</button>
               </div>
             </td>
             <td class="tw-font-bold tw-text-right">{{ cart.quantity * cart.price | formatCurrency }}</td>
@@ -66,7 +68,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="tw-border-b">
+          <!-- <tr class="tw-border-b">
             <td>Tạm tính</td>
             <td class="tw-py-2 tw-text-right tw-font-semibold">price</td>
           </tr>
@@ -77,14 +79,14 @@
               </button>
             </td>
             <td class="tw-py-2 tw-text-right tw-font-semibold">- 10 VND</td>
-          </tr>
+          </tr> -->
           <tr class="tw-border-b">
             <td>Tổng</td>
-            <td class="tw-py-2 tw-text-right tw-font-semibold">price</td>
+            <td class="tw-py-2 tw-text-right tw-font-semibold">{{ this.totalPrice | formatCurrency }}</td>
           </tr>
         </tbody>
       </table>
-      <a href="/#/cart-checkout">
+      <a routerLink="/cart/checkout">
         <button class="tw-mt-4 tw-w-full tw-px-3 tw-py-2 tw-bg-orange-400 tw-font-semibold tw-uppercase tw-text-white tw-text-sm tw-transition tw-ease-linear tw-duration-300 hover:shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]">Tiến hành thanh toán</button>
       </a>
 
@@ -101,9 +103,9 @@
   </section>
 
   <ng-template #emptyCart>
-    <section class="tw-text-center tw-col-span-12 tw-py-12">
+    <section class="tw-text-center tw-col-span-12 tw-py-16">
       <p>Chưa có sản phẩm nào trong giỏ hàng</p>
-      <a href="/#/products" class="tw-block tw-mt-4">
+      <a routerLink="/products" class="tw-block tw-mt-4">
         <button class="tw-uppercase tw-h-8 tw-text-[#D9A953] tw-font-semibold tw-text-sm tw-border-[#D9A953] tw-border-2 tw-px-3 tw-transition tw-ease-linear tw-duration-300 hover:tw-bg-[#D9A953] hover:tw-text-white">
           <i class="fas fa-long-arrow-alt-left"></i> Tiếp tục mua hàng </button>
       </a>

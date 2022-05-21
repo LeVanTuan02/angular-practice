@@ -60,5 +60,73 @@
       "address": "",
       "id": 2
     }
+  ],
+  "orders": [
+    {
+      "userId": 1,
+      "customerName": "Lê Văn Tuân",
+      "address": "Lạng Giang, Bắc Giang",
+      "phone": "0347896888",
+      "email": "admin@gmail.com",
+      "totalPrice": 187000,
+      "message": "Note",
+      "status": 0,
+      "createdAt": "2022-05-21T07:48:33.854Z",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "customerName": "Lê Văn Tuân",
+      "address": "BG",
+      "phone": "0347562367",
+      "email": "admin@gmail.com",
+      "totalPrice": 125000,
+      "message": "",
+      "status": 0,
+      "createdAt": "2022-05-21T08:43:03.168Z",
+      "id": 2
+    },
+    {
+      "userId": 0,
+      "customerName": "Nguyễn Trần Khôi",
+      "address": "Hà Giang",
+      "phone": "0347855699",
+      "email": "khoint@gmail.com",
+      "totalPrice": 25000,
+      "message": "",
+      "status": 0,
+      "createdAt": "2022-05-21T08:54:12.814Z",
+      "id": 3
+    }
+  ],
+  "orderDetails": [
+    {
+      "orderId": 1,
+      "productId": 1,
+      "productPrice": 56000,
+      "quantity": 2,
+      "id": 1
+    },
+    {
+      "orderId": 1,
+      "productId": 2,
+      "productPrice": 25000,
+      "quantity": 3,
+      "id": 2
+    },
+    {
+      "orderId": 2,
+      "productId": 2,
+      "productPrice": 25000,
+      "quantity": 5,
+      "id": 3
+    },
+    {
+      "orderId": 3,
+      "productId": 2,
+      "productPrice": 25000,
+      "quantity": 1,
+      "id": 4
+    }
   ]
 }

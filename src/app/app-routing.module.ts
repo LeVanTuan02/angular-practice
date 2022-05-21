@@ -1,3 +1,5 @@
+import { OrderListComponent } from './pages/admin/order/order-list/order-list.component';
+import { CheckOutComponent } from './pages/client/cart/check-out/check-out.component';
 import { SignupComponent } from './pages/client/auth/signup/signup.component';
 import { SigninComponent } from './pages/client/auth/signin/signin.component';
 import { ListCategoryComponent } from './pages/admin/category/list-category/list-category.component';
@@ -16,6 +18,8 @@ import { AuthGuard } from './guard/auth.guard';
 import { AboutComponent } from './pages/client/about/about.component';
 import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
 import { CartComponent } from './pages/client/cart/cart/cart.component';
+import { FinishComponent } from './pages/client/cart/finish/finish.component';
+import { OrderDetailComponent } from './pages/admin/order/order-detail/order-detail.component';
 
 const routes: Routes = [
   {
@@ -25,7 +29,9 @@ const routes: Routes = [
       { path: "signup", component: SignupComponent },
       { path: "about", component: AboutComponent },
       { path: "san-pham/:slug", component: ProductDetailComponent },
-      { path: "cart", component: CartComponent }
+      { path: "cart", component: CartComponent },
+      { path: "cart/checkout", component: CheckOutComponent },
+      { path: "cart/thank-you", component: FinishComponent }
     ]
   },
   {
@@ -37,6 +43,8 @@ const routes: Routes = [
       { path: "categories", component: ListCategoryComponent },
       { path: "category/add", component: AddCategoryComponent },
       { path: "category/:id/edit", component: EditCategoryComponent },
+      { path: "orders", component: OrderListComponent },
+      { path: "order/:id/detail", component: OrderDetailComponent }
     ]
   }
 ];

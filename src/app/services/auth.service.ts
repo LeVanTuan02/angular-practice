@@ -24,4 +24,9 @@ export class AuthService {
     if (!user) return;
     return JSON.parse(user);
   }
+
+  signout() {
+    localStorage.removeItem("cart");
+    localStorage.removeItem("auth");
+  }
 }

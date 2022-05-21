@@ -29,4 +29,41 @@ export class CartService {
 
     next()
   }
+
+  increaseQnt(cartId: string, next: (cart: any) => void) {
+    const exitsProduct = this.cartList.find(item => item.id === cartId);
+
+    if (exitsProduct) exitsProduct.quantity++;
+    
+    localStorage.setItem("cart", JSON.stringify(this.cartList))
+
+    next(this.cartList);
+  }
+
+  decreaseQnt(cartId: string, next: (carts: any) => void) {
+    const exitsProduct = this.cartList.find(item => item.id === cartId);
+
+    if (exitsProduct) {
+      if (exitsProduct.quantity <= 1) {
+        this.cartList = this.cartList.filter(item => item.id !== cartId);
+      } else {
+        exitsProduct.quantity--;
+      }
+      localStorage.setItem("cart", JSON.stringify(this.cartList));
+
+      next(this.cartList);
+    }
+  }
+
+  handleTotalPrice() {
+    const totalPrice = this.cartList.reduce((totalPrice: number, cart: any) => {
+      return totalPrice + (cart.quantity * cart.price)
+    }, 0);
+
+    return totalPrice;
+  }
+
+  finishOrder() {
+    localStorage.removeItem("cart");
+  }
 }
