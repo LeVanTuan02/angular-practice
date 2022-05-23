@@ -1,3 +1,4 @@
+import { MaterialModule } from './modules/material/material.module';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -76,7 +77,7 @@ import { FormatDatePipe } from './helper/pipe/format-date.pipe';
     ClientCartNavComponent,
     OrderListComponent,
     OrderDetailComponent,
-    FormatDatePipe
+    FormatDatePipe,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +87,8 @@ import { FormatDatePipe } from './helper/pipe/format-date.pipe';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
