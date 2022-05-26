@@ -1,0 +1,71 @@
+<div class="container-lg p-3">
+  <div class="row align-items-center">
+    <div class="col">
+      <h2>Danh sách Topping</h2>
+    </div>
+
+    <div class="col text-end">
+      <button class="btn btn-sm btn-primary" hidden data-bs-toggle="modal" data-bs-target="#toppingModal" #btnOpen>Open Modal</button>
+      <button class="btn btn-sm btn-primary" (click)="handleAdd()">Thêm Topping</button>
+    </div>
+  </div>
+
+  <table class="table" *ngIf="toppingList.length >= 1; else emptyResult">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên Topping</th>
+        <th scope="col">Giá</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let topping of toppingList; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ topping.name }}</td>
+        <td>+{{ topping.price | formatCurrency }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm m-1" (click)="handleEdit(topping.id)">Edit</button>
+          <button class="btn btn-danger btn-sm m-1" (click)="handleRemove(topping.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #emptyResult>
+    <p>Không tồn tại Topping nào!</p>
+  </ng-template>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="toppingModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content" [formGroup]="formModalTopping" (ngSubmit)="handleFormTopping()">
+      <div class="modal-header">
+        <h5 class="modal-title tw-text-xl">{{ modalName === "add" ? "Thêm Topping" : "Cập nhật Topping" }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="name" class="form-label">Tên Topping</label>
+          <input type="text" formControlName="name" id="name" class="form-control" placeholder="Nhập tên Topping">
+          <div class="form-text" *ngIf="formModalTopping.get('name')?.invalid && (formModalTopping.get('name')?.dirty || formModalTopping.get('name')?.touched)">
+            <p class="text-danger" *ngIf="formModalTopping.get('name')?.hasError('required')">Vui lòng nhập tên Topping</p>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="price" class="form-label">Giá Topping</label>
+          <input type="number" formControlName="price" id="price" class="form-control" placeholder="Nhập giá Topping">
+          <div class="form-text" *ngIf="formModalTopping.get('price')?.invalid && (formModalTopping.get('price')?.dirty || formModalTopping.get('price')?.touched)">
+            <p class="text-danger" *ngIf="formModalTopping.get('price')?.hasError('required')">Vui lòng nhập giá Topping</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #btnDismiss>Close</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!formModalTopping.valid">Save changes</button>
+      </div>
+    </form>
+  </div>
+</div>

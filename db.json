@@ -85,18 +85,6 @@
       "status": 0,
       "createdAt": "2022-05-21T08:43:03.168Z",
       "id": 2
-    },
-    {
-      "userId": 0,
-      "customerName": "Nguyễn Trần Khôi",
-      "address": "Hà Giang",
-      "phone": "0347855699",
-      "email": "khoint@gmail.com",
-      "totalPrice": 25000,
-      "message": "",
-      "status": 0,
-      "createdAt": "2022-05-21T08:54:12.814Z",
-      "id": 3
     }
   ],
   "orderDetails": [
@@ -120,13 +108,28 @@
       "productPrice": 25000,
       "quantity": 5,
       "id": 3
+    }
+  ],
+  "toppings": [
+    {
+      "name": "Topping 12",
+      "price": 12000,
+      "id": 1
     },
     {
-      "orderId": 3,
-      "productId": 2,
-      "productPrice": 25000,
-      "quantity": 1,
-      "id": 4
+      "name": "Topping 2",
+      "price": 25000,
+      "id": 2
+    },
+    {
+      "name": "Doug Jackson up",
+      "price": 10000,
+      "id": 5
+    },
+    {
+      "name": "Sản phẩm A1-1",
+      "price": 23567,
+      "id": 6
     }
   ]
 }

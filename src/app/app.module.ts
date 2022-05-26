@@ -44,6 +44,7 @@ import { OrderDetailComponent } from './pages/admin/order/order-detail/order-det
 import { FormatDatePipe } from './helper/pipe/format-date.pipe';
 import { ClientProductsComponent } from './pages/client/client-products/client-products.component';
 import { ClientListProductComponent } from './components/client/client-list-product/client-list-product.component';
+import { AdminToppingListComponent } from './pages/admin/topping/admin-topping-list/admin-topping-list.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { ClientListProductComponent } from './components/client/client-list-prod
     FormatDatePipe,
     ClientProductsComponent,
     ClientListProductComponent,
+    AdminToppingListComponent,
   ],
   imports: [
     BrowserModule,

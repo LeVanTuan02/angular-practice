@@ -1,0 +1,3 @@
+.modal-title {
+  @apply tw-text-xl tw-font-medium
+}
