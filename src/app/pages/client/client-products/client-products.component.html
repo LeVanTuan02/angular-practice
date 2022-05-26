@@ -1,0 +1,99 @@
+<!-- content -->
+<main>
+  <section class="tw-container tw-max-w-6xl tw-mx-auto tw-px-3 tw-pt-8 tw-mb-5 tw-text-center">
+    <div class="tw-flex tw-justify-center">
+      <a routerLink="/" class="tw-transition tw-duration-300 tw-ease-linear hover:tw-text-[#D9A953] tw-block tw-pr-6 tw-font-semibold tw-relative after:tw-content-[''] after:tw-absolute after:tw-right-3 after:tw-bg-gray-500 after:tw-w-[1px] after:tw-h-4 after:tw-rotate-12 after:tw-top-1/2 after:tw--translate-y-1/2">Trang chủ</a>
+      <a routerLink="/san-pham" class="tw-transition tw-duration-300 tw-ease-linear hover:tw-text-[#D9A953] tw-font-semibold">Sản phẩm</a>
+    </div>
+    <h1 class="tw-text-[#D9A953] tw-font-semibold tw-text-3xl tw-mt-1">Danh sách</h1>
+  </section>
+  <section class="tw-container tw-max-w-6xl tw-mx-auto tw-px-3 tw-grid tw-grid-cols-12 tw-gap-6 tw-mb-8">
+    <aside class="tw-hidden lg:tw-block lg:tw-col-span-3 tw-pt-3">
+      <div>
+        <h2 class="tw-uppercase tw-font-bold tw-pb-2 tw-relative after:tw-content-[''] after:tw-absolute after:tw-top-[100%] after:tw-left-0 after:tw-w-8 after:tw-h-1 after:tw-bg-gray-300">Danh mục sản phẩm</h2>
+        <ul class="tw-grid tw-grid-cols-1 tw-divide-y tw-mt-3">
+          <li>
+            <a href="/#/category/${item.id}" class="tw-text-black tw-font-semibold tw-block tw-uppercase tw-py-2 tw-transition tw-duration-300 tw-ease-linear hover:tw-text-black">Cate Name</a>
+            <a href="/#/category/${item.id}" class="tw-text-[#D9A953] tw-block tw-uppercase tw-py-2 tw-transition tw-duration-300 tw-ease-linear hover:tw-text-black">Cate Name</a>
+          </li>
+        </ul>
+      </div>
+      <div class="tw-mt-3">
+        <h2 class="tw-uppercase tw-font-bold tw-pb-2 tw-relative after:tw-content-[''] after:tw-absolute after:tw-top-[100%] after:tw-left-0 after:tw-w-8 after:tw-h-1 after:tw-bg-gray-300">Lọc theo giá</h2>
+      </div>
+      <div class="tw-mt-5">
+        <h2 class="tw-uppercase tw-font-bold tw-pb-2 tw-relative after:tw-content-[''] after:tw-absolute after:tw-top-[100%] after:tw-left-0 after:tw-w-8 after:tw-h-1 after:tw-bg-gray-300">Sản phẩm yêu thích</h2>
+        <ul class="tw-grid tw-grid-cols-1 tw-divide-y tw-mt-2">
+          <li class="tw-py-3 tw-flex">
+            <a href="/#/product/${item.id}" class="tw-block bg-[#f7f7f7]">
+              <img class="tw-w-16 tw-h-16 tw-object-cover tw-block" src="${item.image}" alt="">
+            </a>
+            <div class="tw-ml-3 tw-flex-1">
+              <a href="/#/product/${item.id}" class="tw-uppercase tw-transition tw-duration-300 tw-ease-linear hover:tw-text-black tw-block tw-text-[#D9A953] tw-text-sm">product name</a>
+              <span class="tw-font-semibold">price</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="tw-col-span-12 lg:tw-col-span-9">
+      <!-- filter -->
+      <div class="tw-border-b tw-pb-2 tw-flex tw-justify-between tw-items-center">
+        <div class="tw-flex tw-items-center">
+          <ul class="tw-flex">
+            <li data-view="tw-grid" class="filter__btn-view active tw-text-xl tw-cursor-pointer tw-mr-2 tw-text-gray-600 tw-transition tw-ease-linear tw-duration-150 hover:tw-text-[#D9A953]">
+              <i class="fas fa-th"></i>
+            </li>
+            <li data-view="list" class="filter__btn-view tw-text-xl tw-cursor-pointer tw-mr-2 tw-text-gray-600 tw-transition tw-ease-linear tw-duration-150 hover:tw-text-[#D9A953]">
+              <i class="fas fa-th-list"></i>
+            </li>
+          </ul>
+          <span>Hiển thị 1 - 10 trong 20 kết quả</span>
+        </div>
+        <form action="" class="tw-flex tw-items-center">
+          <label for="filter-sort">Sắp xếp theo</label>
+          <select id="filter-sort" class="tw-ml-2 tw-flex-1 tw-shadow-[inset_0_-1.4em_1em_0_rgba(0,0,0,0.02)] hover:tw-shadow-none hover:tw-cursor-default focus:tw-shadow-[0_0_5px_#ccc] tw-w-full tw-border tw-px-2 tw-h-9 tw-text-sm tw-outline-none">
+            <option value="">Mặc định</option>
+            <option value="createdAt-desc">Thứ tự theo ngày tạo: mới nhất</option>
+            <option value="createdAt-asc">Thứ tự theo ngày tạo: cũ nhất</option>
+            <option value="favorites-asc">Lượt yêu thích: thấp -> cao</option>
+            <option value="favorites-desc">Lượt yêu thích: cao -> thấp</option>
+            <option value="view-asc">Lượt xem: thấp -> cao</option>
+            <option value="view-desc">Lượt xem: cao -> thấp</option>
+            <option value="price-asc">Thứ tự theo giá: thấp -> cao</option>
+            <option value="price-desc">Thứ tự theo giá: cao -> thấp</option>
+          </select>
+        </form>
+      </div>
+      <!-- end filter -->
+
+      <app-client-list-product></app-client-list-product>
+
+      <!-- pagination -->
+      <ul class="tw-flex tw-justify-center tw-mt-5">
+        <li>
+          <a href="/#/${url}/page/${currentPage - 1}" class="tw-w-10 tw-h-10 tw-rounded-full tw-border-2 tw-flex tw-items-center tw-justify-center tw-font-semibold tw-border-gray-500 tw-text-gray-500 tw-mx-0.5 tw-cursor-pointer tw-transition tw-ease-linear tw-duration-200 hover:tw-bg-[#D9A953] hover:tw-border-[#D9A953] hover:tw-text-white">
+            <button>
+              <i class="fas fa-angle-left"></i>
+            </button>
+          </a>
+        </li>
+        <li class="">
+          <a href="/#/${url}/page/${i}" class="tw-w-10 tw-h-10 tw-rounded-full tw-border-2 tw-flex tw-items-center tw-justify-center tw-font-semibold tw-mx-0.5 tw-cursor-pointer tw-transition tw-ease-linear tw-duration-200 hover:tw-bg-[#D9A953] hover:tw-border-[#D9A953] hover:tw-text-white tw-border-[#D9A953] tw-bg-[#D9A953] tw-text-white">1</a>
+        </li>
+        <li class="">
+          <a href="/#/${url}/page/${i}" class="tw-w-10 tw-h-10 tw-rounded-full tw-border-2 tw-flex tw-items-center tw-justify-center tw-font-semibold tw-mx-0.5 tw-cursor-pointer tw-transition tw-ease-linear tw-duration-200 hover:tw-bg-[#D9A953] hover:tw-border-[#D9A953] hover:tw-text-white tw-border-gray-500 tw-text-gray-500">2</a>
+        </li>
+        <li>
+          <a href="/#/${url}/page/${+currentPage + 1}" class="tw-w-10 tw-h-10 tw-rounded-full tw-border-2 tw-flex tw-items-center tw-justify-center tw-font-semibold tw-border-gray-500 tw-text-gray-500 tw-mx-0.5 tw-cursor-pointer tw-transition tw-ease-linear tw-duration-200 hover:tw-bg-[#D9A953] hover:tw-border-[#D9A953] hover:tw-text-white">
+            <button>
+              <i class="fas fa-angle-right"></i>
+            </button>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+<!-- end content -->

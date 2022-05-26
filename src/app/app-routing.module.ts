@@ -1,3 +1,4 @@
+import { ClientProductsComponent } from './pages/client/client-products/client-products.component';
 import { OrderListComponent } from './pages/admin/order/order-list/order-list.component';
 import { CheckOutComponent } from './pages/client/cart/check-out/check-out.component';
 import { SignupComponent } from './pages/client/auth/signup/signup.component';
@@ -31,7 +32,8 @@ const routes: Routes = [
       { path: "san-pham/:slug", component: ProductDetailComponent },
       { path: "cart", component: CartComponent },
       { path: "cart/checkout", component: CheckOutComponent },
-      { path: "cart/thank-you", component: FinishComponent }
+      { path: "cart/thank-you", component: FinishComponent },
+      { path: "san-pham", component: ClientProductsComponent }
     ]
   },
   {

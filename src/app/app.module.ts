@@ -42,6 +42,8 @@ import { ClientCartNavComponent } from './components/client/client-cart-nav/clie
 import { OrderListComponent } from './pages/admin/order/order-list/order-list.component';
 import { OrderDetailComponent } from './pages/admin/order/order-detail/order-detail.component';
 import { FormatDatePipe } from './helper/pipe/format-date.pipe';
+import { ClientProductsComponent } from './pages/client/client-products/client-products.component';
+import { ClientListProductComponent } from './components/client/client-list-product/client-list-product.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { FormatDatePipe } from './helper/pipe/format-date.pipe';
     OrderListComponent,
     OrderDetailComponent,
     FormatDatePipe,
+    ClientProductsComponent,
+    ClientListProductComponent,
   ],
   imports: [
     BrowserModule,
