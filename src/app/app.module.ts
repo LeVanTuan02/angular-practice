@@ -45,6 +45,8 @@ import { FormatDatePipe } from './helper/pipe/format-date.pipe';
 import { ClientProductsComponent } from './pages/client/client-products/client-products.component';
 import { ClientListProductComponent } from './components/client/client-list-product/client-list-product.component';
 import { AdminToppingListComponent } from './pages/admin/topping/admin-topping-list/admin-topping-list.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { ContestsComponent } from './pages/admin/contests/contests/contests.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,7 @@ import { AdminToppingListComponent } from './pages/admin/topping/admin-topping-l
     ClientProductsComponent,
     ClientListProductComponent,
     AdminToppingListComponent,
+    ContestsComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,8 @@ import { AdminToppingListComponent } from './pages/admin/topping/admin-topping-l
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     SlickCarouselModule,
-    MaterialModule
+    MaterialModule,
+    NgxSkeletonLoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

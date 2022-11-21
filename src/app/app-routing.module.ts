@@ -22,6 +22,7 @@ import { CartComponent } from './pages/client/cart/cart/cart.component';
 import { FinishComponent } from './pages/client/cart/finish/finish.component';
 import { OrderDetailComponent } from './pages/admin/order/order-detail/order-detail.component';
 import { AdminToppingListComponent } from './pages/admin/topping/admin-topping-list/admin-topping-list.component';
+import { ContestsComponent } from './pages/admin/contests/contests/contests.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,9 @@ const routes: Routes = [
       { path: "category/:id/edit", component: EditCategoryComponent },
       { path: "orders", component: OrderListComponent },
       { path: "order/:id/detail", component: OrderDetailComponent },
-      { path: "topping", component: AdminToppingListComponent }
+      { path: "topping", component: AdminToppingListComponent },
+      { path: "contests", component: ContestsComponent },
+      { path: "contests/page/:page", component: ContestsComponent }
     ]
   }
 ];

@@ -112,8 +112,8 @@
   ],
   "toppings": [
     {
-      "name": "Topping 12",
-      "price": 12000,
+      "name": "Topping 12 update",
+      "price": 25000,
       "id": 1
     },
     {

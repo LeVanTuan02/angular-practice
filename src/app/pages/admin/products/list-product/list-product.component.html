@@ -49,3 +49,9 @@
     </tbody>
   </table>
 </div>
+
+<div class="container">
+  <div class="tw-grid tw-grid-cols-12 tw-gap-3">
+    <ngx-skeleton-loader class="tw-col-span-4" *ngFor="let item of [].constructor(10)" [theme]="{'height.px': 150}"></ngx-skeleton-loader>
+  </div>
+</div>

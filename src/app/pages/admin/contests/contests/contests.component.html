@@ -1,0 +1,42 @@
+<div class="container-lg p-3">
+  <h2>Cuộc thi</h2>
+
+  <div *ngIf="isFetching">
+    <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+  </div>
+
+  <table class="table" *ngIf="!isFetching">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Tên cuộc thi</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contest of contests; let i = index">
+        <td scope="row">{{ (current_page - 1) * contests.length + i + 1 }}</td>
+        <td>{{ contest.name }}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example" *ngIf="paginationLinks.length >= 1 && !isFetching">
+    <ul class="pagination">
+      <li class="page-item" [ngClass]="{'active': link.active}" *ngFor="let link of paginationLinks">
+        <a [routerLink]="['/admin/contests/page', link.label]" class="page-link" *ngIf="link.url && link.label != 'pagination.previous' && link.label != 'pagination.next'">{{ link.label }}</a>
+        <a [routerLink]="['/admin/contests/page', current_page - 1]" class="page-link" *ngIf="link.label === 'pagination.previous' && current_page > 1">
+          <i class="fa-solid fa-angle-left"></i>
+        </a>
+        <a [routerLink]="['/admin/contests/page', current_page + 1]" class="page-link" *ngIf="link.label === 'pagination.next' && current_page < paginationLinks.length - 2">
+          <i class="fa-solid fa-angle-right"></i>
+        </a>
+      </li>
+      <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+    </ul>
+  </nav>
+</div>
